@@ -8,20 +8,8 @@
  * ------------------------------------------------------------
  */
 {
-  "name": "t:sections.header.name",
-  "type": "header",
-  "sections": {
-    "header": {
-      "type": "header",
-      "settings": {
-        "logo": "shopify://shop_images/logo.png",
-        "main_menu": "main-menu",
-        "show_language_selector": true,
-        "show_currency_selector": true
-      }
-    }
-  },
-  "order": [
-    "header"
-  ]
+    "name": "Overlay Group",
+    "type": "aside",
+    "sections": {},
+    "order": []
 }

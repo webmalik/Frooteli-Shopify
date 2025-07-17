@@ -8,20 +8,16 @@
  * ------------------------------------------------------------
  */
 {
-  "name": "t:sections.header.name",
-  "type": "header",
   "sections": {
-    "header": {
-      "type": "header",
+    "main": {
+      "type": "main-page",
       "settings": {
-        "logo": "shopify://shop_images/logo.png",
-        "main_menu": "main-menu",
-        "show_language_selector": true,
-        "show_currency_selector": true
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     }
   },
   "order": [
-    "header"
+    "main"
   ]
 }

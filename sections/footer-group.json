@@ -13,19 +13,49 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "menu_GPFX76": {
+          "type": "menu",
+          "settings": {
+            "title": "Explore",
+            "menu": "footer"
+          }
+        },
+        "menu_aU4Hj7": {
+          "type": "menu",
+          "settings": {
+            "title": "Product",
+            "menu": "product"
+          }
+        },
+        "menu_WHcDdB": {
+          "type": "menu",
+          "settings": {
+            "title": "For customers",
+            "menu": "customer-account-main-menu"
+          }
+        }
+      },
+      "block_order": [
+        "menu_GPFX76",
+        "menu_aU4Hj7",
+        "menu_WHcDdB"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "logo": "shopify://shop_images/footer-logo.png",
+        "subscribe_title": "Be the first to know about new snacks & offers",
+        "subscribe_placeholder": "Enter your email",
+        "subscribe_button": "Subscribe",
+        "policy_text": "By signing up, you agree to our",
+        "policy_link": "shopify://pages/privacy-policy",
+        "policy_label": "Privacy Policy",
+        "copyright": "© 2025 Frooteli. All rights reserved",
+        "designer_prefix": "Website by",
+        "designer_name": "Karina Chumak",
+        "designer_url": "",
+        "instagram_url": "#",
+        "facebook_url": "#",
+        "linkedin_url": "#"
       }
     }
   },
