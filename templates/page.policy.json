@@ -9,6 +9,31 @@
  */
 {
   "sections": {
+    "banner_slider_mVE8x4": {
+      "type": "banner-slider",
+      "blocks": {
+        "slide_RGiKKj": {
+          "type": "slide",
+          "settings": {
+            "title": "Privacy policy",
+            "text": "Last Updated: May 24, 2025",
+            "image_alt": "Banner image",
+            "max_width": 800,
+            "show_button": false,
+            "button_label": "Shop now",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_RGiKKj"
+      ],
+      "name": "Banner slider",
+      "settings": {
+        "layout": "centered",
+        "hide_images": "yes"
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
@@ -18,6 +43,7 @@
     }
   },
   "order": [
+    "banner_slider_mVE8x4",
     "main"
   ]
 }

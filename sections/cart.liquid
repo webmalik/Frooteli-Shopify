@@ -1,0 +1,58 @@
+<section class="cart" data-fls-cart>
+  <div class="cart__bg" data-cart-close></div>
+  <div class="cart__wrapper">
+    <div class="cart__inner">
+      <div class="cart__head">
+        <div class="cart__header">{{ 'templates.cart.title' | t }}</div>
+        <div class="cart__close" data-cart-close>
+          {% render 'icon-cart-close' %}
+        </div>
+      </div>
+
+      <div class="cart__main" id="fls-cart-items">
+        {% for item in cart.items %}
+          <div class="cart__item" data-line="{{ forloop.index }}">
+            <div class="cart__item-image">
+              <img src="{{ item.image | image_url: width: 100 }}" alt="{{ item.product.title }}" class="ibg" />
+            </div>
+            <div class="cart__item-body">
+              <div class="cart__item-header">
+                <div class="cart__item-title">
+                  <h4>{{ item.product.title }}</h4>
+                  <p class="cart__item-price">{{ item.final_line_price | money }}</p>
+                </div>
+                <div class="cart__item-delete" data-cart-remove="{{ forloop.index }}">
+                  {% render 'icon-cart-trash' %}
+                </div>
+              </div>
+              <div class="cart__item-counter">
+                <div class="cart__item-minus" data-cart-qty-minus="{{ forloop.index }}">
+                  {% render 'icon-cart-minus' %}
+                </div>
+                <div class="cart__item-count">
+                  <input type="text" value="{{ item.quantity }}" readonly />
+                </div>
+                <div class="cart__item-plus" data-cart-qty-plus="{{ forloop.index }}">
+                  {% render 'icon-cart-plus' %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="cart__bottom">
+      <div class="cart__subtotal">
+        <p class="cart__subtotal-title">{{ 'templates.cart.subtotal' | t }}</p>
+        <p class="cart__subtotal-price">{{ cart.total_price | money }}</p>
+      </div>
+      <a href="{{ routes.cart_url }}" class="cart__button button button--primary">
+        {{ 'templates.cart.checkout' | t }}
+      </a>
+      <span class="cart__subtotal-label">
+        {{ 'templates.cart.notice' | t }}
+      </span>
+    </div>
+  </div>
+</section>

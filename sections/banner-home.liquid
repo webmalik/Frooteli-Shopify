@@ -1,0 +1,77 @@
+<section class="banner banner--home" data-fls-bannerhome>
+  <div class="banner__wrapper">
+    <div class="banner__item banner__text">
+      <h1 class="banner__title">{{ section.settings.title }}</h1>
+      <p class="main-text-regular">
+        {{ section.settings.text }}
+      </p>
+      <a href="{{ section.settings.button_url }}" class="banner__button button">
+        <span>{{ section.settings.button_label }}</span>
+        <span class="button-arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <path d="M10.3315 9.69727L20.3028 9.69727L20.3028 19.6685" stroke="#013501" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M20.3023 9.69717L9.6958 20.3037" stroke="#013501" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+      </a>
+    </div>
+    <div class="banner__item banner__image">
+      <img src="{{ section.settings.image | img_url: 'master' }}" class="banner__img" alt="Image" loading="lazy" />
+      <img src="{{ section.settings.decor_1 | image_url: width: 200 }}" alt="" class="banner__decor-1" loading="lazy" />
+      <img src="{{ section.settings.decor_2 | image_url: width: 200 }}" alt="" class="banner__decor-2" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home banner",
+  "tag": "section",
+  "class": "section-banner-home",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Natural snacks for daily joy"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "We craft natural snacks with no added sugar, no colorants, and no preservatives — for those who choose health, quality, and everyday joy."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Explore all products"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link",
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image"
+    },
+    {
+      "type": "image_picker",
+      "id": "decor_1",
+      "label": "Decorative image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "decor_2",
+      "label": "Decorative image 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home banner"
+    }
+  ]
+}
+{% endschema %}

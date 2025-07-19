@@ -1,0 +1,11 @@
+{
+    "name": "Overlay Group",
+    "type": "aside",
+    "sections": {
+        "cart": {
+            "type": "cart",
+            "settings": {}
+        }
+    },
+    "order": ["cart"]
+}

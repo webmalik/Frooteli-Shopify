@@ -1,0 +1,160 @@
+<section class="banner{% if section.settings.layout == 'centered' %} banner--centered{% endif %}{% if section.settings.hide_images == 'yes' %} banner--no-image{% endif %}" data-fls-banner>
+  <div class="banner__inner">
+    <div class="banner__slider swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="banner__slide swiper-slide">
+            {% unless section.settings.hide_images == 'yes' %}
+              <div class="banner__picture">
+                <picture>
+                  {% if block.settings.image_desktop %}
+                    <source srcset="{{ block.settings.image_desktop | image_url: width: 1920 }}" media="(min-width: 992px)" type="image/webp" />
+                  {% endif %}
+                  {% if block.settings.image_mobile %}
+                    <source srcset="{{ block.settings.image_mobile | image_url: width: 992 }}" media="(max-width: 991px)" type="image/webp" />
+                  {% endif %}
+                  {% if block.settings.image_desktop %}
+                    <img
+                      src="{{ block.settings.image_desktop | image_url: width: 1920 }}"
+                      alt="{{ block.settings.image_alt | escape }}"
+                      loading="lazy"
+                      width="1920"
+                      height="800" />
+                  {% endif %}
+                </picture>
+              </div>
+            {% endunless %}
+            <div class="banner__content"{% if block.settings.max_width %} style="max-width: {{ block.settings.max_width }}px"{% endif %}>
+              {% if block.settings.title != blank %}
+                <h1 class="banner__title">{{ block.settings.title }}</h1>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <p class="main-text-regular">{{ block.settings.text }}</p>
+              {% endif %}
+              {% if block.settings.show_button and block.settings.button_label != blank %}
+                <a href="{{ block.settings.button_url }}" class="banner__button button">
+                  <span>{{ block.settings.button_label }}</span>
+                  <span class="button-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                      <path d="M10.3315 9.69727L20.3028 9.69727L20.3028 19.6685" stroke="#013501" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M20.3023 9.69717L9.6958 20.3037" stroke="#013501" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="banner__pagination pagination"></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner slider",
+  "tag": "section",
+  "class": "section-banner-slider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout style",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "centered", "label": "Centered" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "hide_images",
+      "label": "Display images",
+      "options": [
+        { "value": "no", "label": "Show images" },
+        { "value": "yes", "label": "Hide images (text only)" }
+      ],
+      "default": "no"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "New: lemon and herb spice mix"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "A clean, flavorful touch to your meals — no sugar, no additives."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image (desktop)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image (mobile)"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+          "default": "Banner image"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Content max width",
+          "unit": "px",
+          "min": 300,
+          "max": 800,
+          "step": 10,
+          "default": 520
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button",
+          "label": "Show button",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Banner slider",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "title": "New: lemon and herb spice mix",
+            "text": "A clean, flavorful touch to your meals — no sugar, no additives."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

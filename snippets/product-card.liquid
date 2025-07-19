@@ -1,0 +1,36 @@
+<div class="card" data-fls-card>
+  <div class="card__wrapper">
+    <div class="card__top">
+      <div class="card__labels">
+        {% for tag in product.tags %}
+			<div class="card__label">{{ tag }}</div>
+		{% endfor %}
+      </div>
+      <div class="card__wishlist">
+        {% render 'icon-wishlist' %}
+      </div>
+    </div>
+
+    <div class="card__image">
+      <a href="{{ product.url }}">
+        <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.title}}" loading="lazy" />
+      </a>
+      <form method="post" action="/cart/add">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="card__button">{{ 'products.product.add_to_cart' | t }}</button>
+      </form>
+    </div>
+
+    <div class="card__bottom">
+      <div class="card__title">
+        <a href="{{ product.url }}">{{ product.title }}</a>
+      </div>
+      <div class="card__price">
+        {% if product.compare_at_price > product.price %}
+          <span class="card__price--old">{{ product.compare_at_price | money }}</span>
+        {% endif %}
+        <span class="card__price--new">{{ product.price | money }}</span>
+      </div>
+    </div>
+  </div>
+</div>

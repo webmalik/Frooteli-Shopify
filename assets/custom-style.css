@@ -7,6 +7,19 @@
     bottom: -70px;
 }
 
+.card__price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card__price--old {
+    color: #121212;
+    opacity: 0.7;
+    text-decoration: line-through;
+}
+
 @media (max-width: 61.9988em) {
     .footer__menu {
         gap: 0 !important;

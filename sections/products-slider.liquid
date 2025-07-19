@@ -1,0 +1,105 @@
+<section class="products-slider" data-fls-products>
+  <div class="products-slider__wrapper swiper">
+    <div class="products-slider__header">
+      <h2 class="products-slider__title">{{ section.settings.title }}</h2>
+      <div class="products-slider__nav slider-nav">
+        <div class="products-slider__prev slider-prev">
+			{% render 'slider-prev' %}
+        </div>
+        <div class="products-slider__next slider-next">
+			{% render 'slider-next' %}
+        </div>
+      </div>
+    </div>
+
+    <div class="products-slider__swiper">
+      <div class="swiper-wrapper">
+        {% if section.settings.collection != blank %}
+          {% for product in section.settings.collection.products limit: section.settings.products_limit %}
+            <div class="products-slider__slide swiper-slide">
+              {% render 'product-card', product: product %}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for block in section.blocks %}
+            {% assign product = block.settings.product %}
+            {% if product != blank %}
+              <div class="products-slider__slide swiper-slide">
+                {% render 'product-card', product: product %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_url }}" class="products-slider__button">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Products slider",
+  "tag": "section",
+  "class": "section-products-slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Block title",
+      "default": "Popular products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Product collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Number of products (for collection)",
+      "min": 3,
+      "max": 20,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button text",
+      "default": "Show all"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Products slider",
+      "settings": {
+        "title": "Popular products"
+      }
+    }
+  ]
+}
+{% endschema %}
