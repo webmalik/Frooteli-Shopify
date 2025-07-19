@@ -1,128 +1,143 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cart = document.querySelector('[data-fls-cart]');
-    const cartWrapper = document.documentElement;
-    if (!cart) return;
+    const cartContainer = document.querySelector('#fls-cart-items');
+    const subtotalElement = document.querySelector('.cart__subtotal-price');
+    const template = document.querySelector('#cart-item-template');
 
-    const CART_CLASS = 'cart--active';
-    const SELECTORS = {
-        open: '[data-cart-open]',
-        close: '[data-cart-close]',
-        itemsWrapper: '#fls-cart-items',
-        subtotal: '.cart__subtotal-price',
+    if (!cartContainer || !template) return;
+
+    const templateHTML = template.innerHTML.trim();
+    const shopLocale = document.documentElement.lang || 'en-US';
+    const currency = window.Shopify?.currency?.active || 'USD';
+
+    const formatPrice = (amount) =>
+        new Intl.NumberFormat(shopLocale, {
+            style: 'currency',
+            currency: currency,
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        }).format(amount / 100);
+
+    const createCartItem = ({ key, product_title, image, quantity, line_price }) => {
+        const safeQty = Math.max(1, parseInt(quantity) || 1);
+        const imgSrc =
+            typeof image === 'string'
+                ? image
+                : image?.src || 'https://cdn.shopify.com/s/files/1/0000/0001/files/no-image.jpg';
+
+        const html = templateHTML
+            .replaceAll('[[key]]', key || '')
+            .replaceAll('[[title]]', product_title || 'Untitled')
+            .replaceAll('[[price]]', formatPrice(line_price || 0))
+            .replaceAll('[[quantity]]', safeQty);
+
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = html;
+        const itemNode = wrapper.firstElementChild;
+
+        const img = itemNode.querySelector('[data-cart-img]');
+        if (img) img.setAttribute('src', imgSrc);
+
+        return itemNode;
     };
 
-    const openCart = () => {
-        cart.classList.add(CART_CLASS);
-        cartWrapper.classList.add('cart-open');
-        document.dispatchEvent(new CustomEvent('cart:open'));
-    };
+    const renderCart = async () => {
+        try {
+            const res = await fetch('/cart.js');
+            if (!res.ok) throw new Error(`Cart fetch failed: ${res.status}`);
+            const cart = await res.json();
 
-    const closeCart = () => {
-        cart.classList.remove(CART_CLASS);
-        cartWrapper.classList.remove('cart-open');
-        document.dispatchEvent(new CustomEvent('cart:close'));
-    };
+            cartContainer.innerHTML = '';
 
-    const toggleCart = () => {
-        if (cart.classList.contains(CART_CLASS)) {
-            closeCart();
-        } else {
-            openCart();
+            if (!Array.isArray(cart.items) || cart.items.length === 0) {
+                cartContainer.innerHTML = '<div class="cart__empty">Your cart is empty</div>';
+                subtotalElement.textContent = formatPrice(0);
+                return;
+            }
+
+            cart.items.forEach((item) => {
+                const card = createCartItem(item);
+                cartContainer.appendChild(card);
+            });
+
+            subtotalElement.textContent = formatPrice(cart.total_price || 0);
+            bindCartEvents();
+        } catch (err) {
+            console.error('Cart render error:', err);
         }
     };
 
-    window.flsCart = {
-        open: openCart,
-        close: closeCart,
-        toggle: toggleCart,
-        isOpen: () => cart.classList.contains(CART_CLASS),
+    const changeItemQty = async (key, quantity) => {
+        const safeQty = Number.isInteger(quantity) ? quantity : parseInt(quantity);
+        if (!key || isNaN(safeQty) || safeQty < 0 || safeQty > 999) return;
+
+        try {
+            const res = await fetch('/cart/change.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: key, quantity: safeQty }),
+            });
+
+            if (res.status === 429) {
+                alert('Too many requests. Please wait.');
+                return;
+            }
+
+            const data = await res.json();
+
+            if (res.status === 422 || !data) {
+                alert('Item not available or sold out.');
+                return;
+            }
+
+            renderCart();
+        } catch (err) {
+            console.error('Qty update error:', err);
+        }
     };
 
-    // Прив’язка до кнопок
-    document
-        .querySelectorAll(SELECTORS.open)
-        .forEach((btn) => btn.addEventListener('click', openCart));
-    document
-        .querySelectorAll(SELECTORS.close)
-        .forEach((btn) => btn.addEventListener('click', closeCart));
+    const bindCartEvents = () => {
+        cartContainer.querySelectorAll('.cart__item').forEach((item) => {
+            const key = item.dataset.cartKey;
+            const input = item.querySelector('input');
+            const minus = item.querySelector('[data-cart-minus]');
+            const plus = item.querySelector('[data-cart-plus]');
+            const remove = item.querySelector('[data-cart-remove]');
 
-    cart.addEventListener('click', (e) => {
-        if (e.target === cart) closeCart();
-    });
+            if (!key || !input) return;
 
-    // Івенти
-    document.addEventListener('cart:open', refreshCart);
+            plus?.addEventListener('click', () => {
+                let qty = parseInt(input.value) || 1;
+                qty = Math.min(999, qty + 1);
+                changeItemQty(key, qty);
+            });
 
-    // Дії по кліках
-    cart.addEventListener('click', (e) => {
-        const removeBtn = e.target.closest('[data-cart-remove]');
-        const minusBtn = e.target.closest('[data-cart-qty-minus]');
-        const plusBtn = e.target.closest('[data-cart-qty-plus]');
-
-        if (removeBtn) {
-            const line = parseInt(removeBtn.dataset.cartRemove, 10);
-            updateCart(line, 0);
-        }
-
-        if (minusBtn) {
-            const line = parseInt(minusBtn.dataset.cartQtyMinus, 10);
-            const input = cart.querySelector(`[data-line="${line}"] input`);
-            const current = parseInt(input?.value || '1');
-            if (current > 1) updateCart(line, current - 1);
-        }
-
-        if (plusBtn) {
-            const line = parseInt(plusBtn.dataset.cartQtyPlus, 10);
-            const input = cart.querySelector(`[data-line="${line}"] input`);
-            const current = parseInt(input?.value || '1');
-            updateCart(line, current + 1);
-        }
-    });
-
-    // Оновлення корзини
-    function refreshCart() {
-        fetch(`${window.location.pathname}?section_id=cart`)
-            .then((res) => res.text())
-            .then((html) => {
-                const temp = document.createElement('div');
-                temp.innerHTML = html;
-
-                const newItems = temp.querySelector(SELECTORS.itemsWrapper);
-                const newSubtotal = temp.querySelector(SELECTORS.subtotal);
-
-                if (newItems) {
-                    document.querySelector(SELECTORS.itemsWrapper)?.replaceWith(newItems);
+            minus?.addEventListener('click', () => {
+                let qty = parseInt(input.value) || 1;
+                if (qty > 1) {
+                    changeItemQty(key, qty - 1);
+                } else {
+                    changeItemQty(key, 0);
                 }
-                if (newSubtotal) {
-                    document.querySelector(SELECTORS.subtotal)?.replaceWith(newSubtotal);
-                }
-            })
-            .then(() => initCartInputs());
-    }
+            });
 
-    // Оновлення кількості/видалення
-    function updateCart(line, quantity) {
-        fetch('/cart/change.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ line, quantity }),
-        }).then(refreshCart);
-    }
+            input?.addEventListener('change', () => {
+                let val = parseInt(input.value);
+                if (isNaN(val) || val <= 0) val = 1;
+                if (val > 999) val = 999;
+                input.value = val;
+                changeItemQty(key, val);
+            });
 
-    // Ініціалізація кнопок +/-
-    function initCartInputs() {
-        cart.querySelectorAll('.cart__item').forEach((item) => {
-            const input = item.querySelector('.cart__item-count input');
-            const minus = item.querySelector('.cart__item-minus');
-
-            if (!input) return;
-
-            const val = parseInt(input.value || '1');
-            input.value = val;
-            minus?.classList.toggle('disabled', val <= 1);
+            remove?.addEventListener('click', () => {
+                changeItemQty(key, 0);
+            });
         });
-    }
+    };
 
-    // Первинна ініціалізація
-    initCartInputs();
+    document.addEventListener('cart:open', renderCart);
+    window.addEventListener('cartToggled', (e) => {
+        if (e.detail?.isOpen) renderCart();
+    });
+
+    renderCart();
 });

@@ -1,0 +1,160 @@
+{% assign layout_class = section.settings.layout %}
+
+<section
+  class="content-banner content-banner--{{ layout_class }}{% if layout_class == 'centered-mobile' %} content-banner--mobile-centered{% endif %}"
+  data-fls-contentbanner>
+  <div class="content-banner__wrapper">
+    <div class="content-banner__inner">
+      {% unless layout_class == 'two-columns' %}
+        <div class="content-banner__background">
+          <picture>
+            {% if section.settings.image_desktop %}
+              <source
+                srcset="{{ section.settings.image_desktop | image_url }}"
+                media="(min-width: 992px)"
+                type="image/webp" />
+            {% endif %}
+            {% if section.settings.image_mobile %}
+              <source
+                srcset="{{ section.settings.image_mobile | image_url }}"
+                media="(max-width: 991px)"
+                type="image/webp" />
+            {% endif %}
+            <img
+              src="{{ section.settings.image_desktop | image_url }}"
+              alt="{{ section.settings.title | escape }}"
+              loading="lazy"
+              width="1920"
+              height="800" />
+          </picture>
+        </div>
+      {% endunless %}
+
+      <div
+        class="content-banner__content"
+        style="max-width: {{ section.settings.content_max_width }}px">
+        <div class="content-banner__text">
+          {% if section.settings.title != blank %}
+            <h2 class="content-banner__title">
+              {{ section.settings.title | escape }}
+            </h2>
+          {% endif %}
+          {% if section.settings.text != blank %}
+            <p class="main-text-regular">
+              {{ section.settings.text }}
+            </p>
+          {% endif %}
+        </div>
+
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_url | default: '#' }}" class="banner__button button">
+            <span>{{ section.settings.button_text }}</span>
+            <span class="button-arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none">
+                <path
+                  d="M10.3315 9.69727L20.3028 9.69727L20.3028 19.6685"
+                  stroke="#013501"
+                  stroke-width="1.66667"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M20.3023 9.69717L9.6958 20.3037"
+                  stroke="#013501"
+                  stroke-width="1.66667"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if layout_class == 'two-columns' and section.settings.image_secondary %}
+      <div class="content-banner__image">
+        <img
+          src="{{ section.settings.image_secondary | image_url }}"
+          alt="{{ section.settings.title | escape }}" />
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Content Banner",
+  "tag": "section",
+  "class": "section-content-banner",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout type",
+      "options": [
+        { "value": "centered", "label": "Centered" },
+        { "value": "centered-mobile", "label": "Centered (Mobile Centered)" },
+        { "value": "left", "label": "Left aligned" },
+        { "value": "two-columns", "label": "Two columns" }
+      ],
+      "default": "centered"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_secondary",
+      "label": "Secondary image (for two-columns layout)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Content banner title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width (px)",
+      "min": 300,
+      "max": 800,
+      "step": 10,
+      "default": 500
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content Banner",
+      "category": "Banners"
+    }
+  ]
+}
+{% endschema %}

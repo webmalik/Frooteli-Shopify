@@ -30,7 +30,7 @@
                   {% render 'icon-cart-minus' %}
                 </div>
                 <div class="cart__item-count">
-                  <input type="text" value="{{ item.quantity }}" readonly />
+                  <input type="text" value="{{ item.quantity }}" />
                 </div>
                 <div class="cart__item-plus" data-cart-qty-plus="{{ forloop.index }}">
                   {% render 'icon-cart-plus' %}
@@ -47,7 +47,7 @@
         <p class="cart__subtotal-title">{{ 'templates.cart.subtotal' | t }}</p>
         <p class="cart__subtotal-price">{{ cart.total_price | money }}</p>
       </div>
-      <a href="{{ routes.cart_url }}" class="cart__button button button--primary">
+      <a href="/checkout" class="cart__button button button--primary">
         {{ 'templates.cart.checkout' | t }}
       </a>
       <span class="cart__subtotal-label">
@@ -56,3 +56,30 @@
     </div>
   </div>
 </section>
+<div id="cart-item-template" style="display: none">
+  <div class="cart__item" data-cart-key="[[key]]">
+    <div class="cart__item-image">
+      <img data-cart-img alt="[[title]]" class="ibg" />
+    </div>
+    <div class="cart__item-body">
+      <div class="cart__item-header">
+        <div class="cart__item-title">
+          <h4>[[title]]</h4>
+          <p class="cart__item-price">[[price]]</p>
+        </div>
+        <button type="button" class="cart__item-delete" data-cart-remove>
+          {% render 'icon-cart-trash' %}
+        </button>
+      </div>
+      <div class="cart__item-counter">
+        <button type="button" class="cart__item-minus" data-cart-minus>{% render 'icon-cart-minus' %}</button>
+        <div class="cart__item-count">
+          <input type="text" value="[[quantity]]" readonly />
+        </div>
+        <button type="button" class="cart__item-plus" data-cart-plus>{% render 'icon-cart-plus' %}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'cart-custom.js' | asset_url }}" defer="defer"></script>
