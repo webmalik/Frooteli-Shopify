@@ -264,12 +264,18 @@
             "form": {
                 "title": "Contact form",
                 "name": "Name",
+                "name_placeholder": "Olivia Carter",
                 "email": "Email",
+                "email_placeholder": "example@gmail.com",
                 "phone": "Phone number",
-                "comment": "Comment",
-                "send": "Send",
+                "phone_placeholder": "+1 (212) 678-4432",
+                "comment": "Message",
+                "comment_placeholder": "Your Message",
+                "send": "Submit",
                 "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
-                "error_heading": "Please adjust the following:"
+                "error_heading": "Please adjust the following:",
+                "policy_text": "Agree with our",
+                "policy_text_link": "Privacy Policy"
             }
         },
         "404": {

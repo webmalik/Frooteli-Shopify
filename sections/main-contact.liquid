@@ -1,0 +1,94 @@
+<section class="contacts" data-fls-contacts>
+  <div class="contacts__wrapper">
+    <div class="contacts__image">
+      {% if section.settings.image %}
+        <img
+          src="{{ section.settings.image | img_url: 'master' }}"
+          alt="{{ section.settings.image.alt | escape }}"
+          loading="lazy"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+        />
+      {% endif %}
+    </div>
+    <div class="contacts__content">
+      <h1 class="contacts__title">{{ section.settings.title }}</h1>
+	  {%- form 'contact', id: 'ContactForm', class: 'contacts__form' -%}
+        <div class="contacts__input">
+          <label for="full"> {{ 'templates.contact.form.name' | t }} </label>
+          <input type="text" name="full" placeholder="{{ 'templates.contact.form.name_placeholder' | t }}" />
+        </div>
+        <div class="contacts__line">
+          <div class="contacts__input">
+            <label for="email"> {{ 'templates.contact.form.email' | t }} </label>
+            <input type="email" name="email" placeholder="{{ 'templates.contact.form.email_placeholder' | t }}" />
+          </div>
+          <div class="contacts__input">
+            <label for="phone"> {{ 'templates.contact.form.phone' | t }} </label>
+            <input type="tel" name="phone" placeholder="{{ 'templates.contact.form.phone_placeholder' | t }}" />
+          </div>
+        </div>
+        <div class="contacts__input">
+          <label for="message"> {{ 'templates.contact.form.comment' | t }} </label>
+          <textarea name="message" placeholder="{{ 'templates.contact.form.comment_placeholder' | t }}"></textarea>
+          <input type="checkbox" name="contacts-policy" id="contacts-policy" />
+          <label for="contacts-policy">
+            <span>{{ 'templates.contact.form.policy_text' | t }} <a href="{{ section.settings.privacy_url }}">{{ 'templates.contact.form.policy_text_link' | t }}</a></span>
+          </label>
+        </div>
+        <button type="submit" class="contacts__button button button--primary">
+           {{ 'templates.contact.form.send' | t }}
+        </button>
+		{%- if form.posted_successfully? -%}
+        <p class="main-text-regular contacts__message" tabindex="-1" autofocus>
+          {{- 'icon-success.svg' | inline_asset_content -}}
+          {{ 'templates.contact.form.post_success' | t }}
+		</p>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <p class="main-text-regular contacts__message" role="alert" tabindex="-1" autofocus>
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </p>
+		  <p class="main-text-regular contacts__message" >
+			{{ form.errors.translated_fields.email | capitalize }}
+			{{ form.errors.messages.email }}
+		  </p>
+        </div>
+      {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contacts",
+  "tag": "section",
+  "class": "section-contacts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Form title",
+      "default": "Send us a message"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Privacy policy link",
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contacts",
+      "category": "Contact"
+    }
+  ]
+}
+{% endschema %}
