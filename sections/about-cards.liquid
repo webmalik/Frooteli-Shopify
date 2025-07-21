@@ -1,0 +1,90 @@
+<section class="about__cards" data-fls-about-cards>
+  {% if section.settings.title != blank %}
+    <h2 class="about__cards-header">{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="about__cards-wrapper">
+    {% for block in section.blocks %}
+      <div class="about__cards-item">
+        <div class="about__cards-icon">
+          {{ block.settings.icon_svg }}
+        </div>
+        <div class="about__cards-content">
+          <h5 class="about__cards-title">{{ block.settings.title }}</h5>
+          <p class="about__cards-text main-text-regular">{{ block.settings.text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About cards",
+  "tag": "section",
+  "class": "section-about-cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Who It’s for"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "SVG Icon",
+          "default": "<svg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'><rect x='0.7' y='0.7' width='48.6' height='48.6' rx='24.3' stroke='currentColor' stroke-width='1.4'/></svg>"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title",
+          "default": "Card title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Card description",
+          "default": "Card description goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About cards",
+      "category": "About",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "For those who love real, clean taste",
+            "text": "No additives, no tricks — only what truly matters.",
+            "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50' fill='none'><rect x='0.7' y='0.7' width='48.6' height='48.6' rx='24.3' stroke='currentColor' stroke-width='1.4'/><path d='M16.25 36.25C16.875 30.625 19.375 26.25 25 23.75' stroke='currentColor' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/><path d='M21.248 32.5C29.0205 32.5 34.373 28.39 34.998 17.5V15H29.9805C18.7305 15 14.998 20 14.9805 26.25C14.9805 27.5 14.9805 30 17.4805 32.5H21.2305H21.248Z' stroke='currentColor' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "For those who choose with others in mind",
+            "text": "Frooteli is a gift made with care, not just something to give."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "For those who value convenience",
+            "text": "Easy to carry, simple to store, and always a pleasure to share."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

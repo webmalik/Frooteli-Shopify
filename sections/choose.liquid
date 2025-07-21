@@ -1,0 +1,136 @@
+<section class="choose" data-fls-choose>
+  <div class="choose__wrapper">
+    {% if section.settings.title != blank %}
+      <h2 class="choose__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="choose__content">
+      	<div class="choose__list">
+			{% for item in section.blocks %}
+				{% if item.settings.column == 'left' %}
+				<div class="choose__item choose__item-{{ forloop.index }}">
+					{{ item.settings.text }}
+				</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+      <div class="choose__inner">
+        {% if section.settings.image != blank %}
+          <div class="choose__image">
+            <img
+              src="{{ section.settings.image | image_url: width: 600 }}"
+              alt="{{ section.settings.image.alt | escape }}"
+              loading="lazy"
+              width="{{ section.settings.image.width }}"
+              height="{{ section.settings.image.height }}"
+            />
+          </div>
+        {% endif %}
+      </div>
+      <div class="choose__list">
+			{% for item in section.blocks %}
+				{% if item.settings.column == 'right' %}
+				<div class="choose__item choose__item-{{ forloop.index }}">
+					{{ item.settings.text }}
+				</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Choose Block",
+  "tag": "section",
+  "class": "section-choose",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Why choose us?"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Center image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_block",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "column",
+          "label": "Column",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Item text",
+          "default": "Your benefit here"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Choose Block",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "text_block",
+          "settings": {
+            "column": "left",
+            "text": "Direct supply from farmers"
+          }
+        },
+        {
+          "type": "text_block",
+          "settings": {
+            "column": "left",
+            "text": "100% natural ingredients"
+          }
+        },
+        {
+          "type": "text_block",
+          "settings": {
+            "column": "left",
+            "text": "No additives or preservatives"
+          }
+        },
+        {
+          "type": "text_block",
+          "settings": {
+            "column": "right",
+            "text": "Wide product range"
+          }
+        },
+        {
+          "type": "text_block",
+          "settings": {
+            "column": "right",
+            "text": "Fast delivery across Europe"
+          }
+        },
+        {
+          "type": "text_block",
+          "settings": {
+            "column": "right",
+            "text": "High quality and certification"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

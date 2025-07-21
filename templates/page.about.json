@@ -9,15 +9,192 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "banner-slider": {
+      "type": "banner-slider",
+      "blocks": {
+        "slide_nFnx68": {
+          "type": "slide",
+          "settings": {
+            "title": "About us",
+            "text": "Our story is simple — we make what we’d share\nwith our own family.",
+            "image_desktop": "shopify://shop_images/banner-about.png",
+            "image_mobile": "shopify://shop_images/banner-about-mobile.png",
+            "image_alt": "Banner image",
+            "max_width": 420,
+            "show_button": false,
+            "button_label": "Shop now",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_nFnx68"
+      ],
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "layout": "centered",
+        "hide_images": "no"
+      }
+    },
+    "about_GKaDyJ": {
+      "type": "about",
+      "blocks": {
+        "about_block_XahHgp": {
+          "type": "about_block",
+          "settings": {
+            "image": "shopify://shop_images/1.png",
+            "title": "Who’s behind frooteli",
+            "text1": "We’re a small team that believes in natural snacks, honest ingredients, and simple things made with care. It all started with an idea to create a product we’d happily share with our kids, friends, or take on the road ourselves.",
+            "text2": "We carefully choose the farmers we work with: we meet them, talk to them, and see how the food you enjoy is grown. We support those who treat the land with love — because for us, it’s not about volume, it’s about quality.",
+            "reverse_layout": false
+          }
+        },
+        "about_block_4GbDzQ": {
+          "type": "about_block",
+          "settings": {
+            "image": "shopify://shop_images/2.png",
+            "title": "What we do",
+            "text1": "We produce natural dried fruits, berries, spices, and gift fruit boxes. No added sugar. No colorants. No preservatives. Just pure taste — nothing standing in the way of what nature intended.",
+            "text2": "We don’t mask — we reveal. Each piece holds the brightness, texture, and warmth of the season. We don’t add anything unnecessary — because we don’t believe nature needs “improving.”",
+            "reverse_layout": true
+          }
+        },
+        "about_block_xbEtjn": {
+          "type": "about_block",
+          "settings": {
+            "image": "shopify://shop_images/3.png",
+            "title": "Our approach is built on trust",
+            "text1": "We work directly with farmers who grow fruits and spices without chemicals or artificial growth boosters. We harvest only when the fruits are ripe. We don’t rush — because quality takes time.",
+            "text2": "The drying process is gentle. We don’t scorch the fruit — we preserve its flavor and texture with care. And we keep packaging simple: no plastic, no excess. Our boxes are not only tasty — they’re thoughtful and beautiful. No gloss, just care.",
+            "reverse_layout": false
+          }
+        }
+      },
+      "block_order": [
+        "about_block_XahHgp",
+        "about_block_4GbDzQ",
+        "about_block_xbEtjn"
+      ],
+      "name": "About section",
+      "settings": {}
+    },
+    "about_cards_NYDk9M": {
+      "type": "about-cards",
+      "blocks": {
+        "card_bRDtAN": {
+          "type": "card",
+          "settings": {
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"50\" height=\"50\" viewbox=\"0 0 50 50\" fill=\"none\">\n                            <rect x=\"0.7\" y=\"0.7\" width=\"48.6\" height=\"48.6\" rx=\"24.3\" stroke=\"currentColor\" stroke-width=\"1.4\"></rect>\n                            <path d=\"M16.25 36.25C16.875 30.625 19.375 26.25 25 23.75\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n                            <path d=\"M21.248 32.5C29.0205 32.5 34.373 28.39 34.998 17.5V15H29.9805C18.7305 15 14.998 20 14.9805 26.25C14.9805 27.5 14.9805 30 17.4805 32.5H21.2305H21.248Z\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n                        </svg>",
+            "title": "For those who love real, clean taste",
+            "text": "No additives, no tricks — only what truly matters."
+          }
+        },
+        "card_KF68r9": {
+          "type": "card",
+          "settings": {
+            "icon_svg": "<svg width=\"50\" height=\"50\" viewbox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                            <rect x=\"0.7\" y=\"0.7\" width=\"48.6\" height=\"48.6\" rx=\"24.3\" stroke=\"currentColor\" stroke-width=\"1.4\"></rect>\n                            <path d=\"M37.5 25H12.5\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"></path>\n                            <path d=\"M25 12.5V37.5\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"></path>\n                            <path d=\"M26.25 25C26.25 27.7614 28.4886 30 31.25 30\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"></path>\n                            <path d=\"M23.75 25C23.75 27.7614 21.5114 30 18.75 30\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"></path>\n                            <path d=\"M25 22.5431C25 20.6808 26.2675 19.0574 28.0742 18.6057C30.0789 18.1045 31.8947 19.9204 31.3936 21.925C30.9419 23.7318 29.3185 24.9993 27.4562 24.9993H25V22.5431Z\" stroke=\"currentColor\" stroke-width=\"1.4\"></path>\n                            <path d=\"M25.0012 22.5431C25.0012 20.6808 23.7337 19.0574 21.927 18.6057C19.9223 18.1045 18.1065 19.9204 18.6077 21.925C19.0593 23.7318 20.6827 24.9993 22.5451 24.9993H25.0012V22.5431Z\" stroke=\"currentColor\" stroke-width=\"1.4\"></path>\n                            <path d=\"M12.5 25C12.5 19.1074 12.5 16.1612 14.3306 14.3306C16.1612 12.5 19.1074 12.5 25 12.5C30.8926 12.5 33.8388 12.5 35.6694 14.3306C37.5 16.1612 37.5 19.1074 37.5 25C37.5 30.8926 37.5 33.8388 35.6694 35.6694C33.8388 37.5 30.8926 37.5 25 37.5C19.1074 37.5 16.1612 37.5 14.3306 35.6694C12.5 33.8388 12.5 30.8926 12.5 25Z\" stroke=\"currentColor\" stroke-width=\"1.4\"></path>\n                        </svg>",
+            "title": "For those who choose with others in mind",
+            "text": "Frooteli is a gift made with care, not just something to give."
+          }
+        },
+        "card_tf4Xd3": {
+          "type": "card",
+          "settings": {
+            "icon_svg": "<svg width=\"50\" height=\"50\" viewbox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                            <rect x=\"0.7\" y=\"0.7\" width=\"48.6\" height=\"48.6\" rx=\"24.3\" stroke=\"currentColor\" stroke-width=\"1.4\"></rect>\n                            <path d=\"M22.6872 21.0027L22.2748 21.5684L22.6872 21.0027ZM25 13.8827L24.5263 14.3981C24.7941 14.6442 25.2059 14.6442 25.4737 14.3981L25 13.8827ZM27.3128 21.0027L27.7252 21.5684L27.3128 21.0027ZM25 22.095L25 22.795H25L25 22.095ZM22.6872 21.0027L23.0995 20.4371C22.2299 19.8031 21.2934 19.026 20.5812 18.2005C19.8522 17.3554 19.45 16.565 19.45 15.8935H18.75H18.05C18.05 17.0783 18.7265 18.1938 19.5211 19.115C20.3326 20.0556 21.3647 20.9049 22.2748 21.5684L22.6872 21.0027ZM18.75 15.8935H19.45C19.45 14.4815 20.1531 13.6269 21.0436 13.3272C21.959 13.0191 23.2623 13.2362 24.5263 14.3981L25 13.8827L25.4737 13.3673C23.9253 11.9441 22.1036 11.4933 20.5971 12.0003C19.0657 12.5156 18.05 13.9589 18.05 15.8935H18.75ZM27.3128 21.0027L27.7252 21.5684C28.6353 20.905 29.6674 20.0556 30.4789 19.115C31.2735 18.1938 31.95 17.0783 31.95 15.8934H31.25H30.55C30.55 16.565 30.1478 17.3554 29.4188 18.2005C28.7066 19.0261 27.7701 19.8032 26.9005 20.4371L27.3128 21.0027ZM31.25 15.8934H31.95C31.95 13.9589 30.9343 12.5156 29.4029 12.0003C27.8964 11.4933 26.0747 11.9441 24.5263 13.3673L25 13.8827L25.4737 14.3981C26.7377 13.2362 28.041 13.0191 28.9564 13.3272C29.8469 13.6269 30.55 14.4815 30.55 15.8934H31.25ZM22.6872 21.0027L22.2748 21.5684C23.2326 22.2666 23.918 22.795 25 22.795L25 22.095L25 21.395C24.453 21.395 24.1395 21.1952 23.0995 20.4371L22.6872 21.0027ZM27.3128 21.0027L26.9005 20.4371C25.8605 21.1952 25.547 21.395 25 21.395L25 22.095L25 22.795C26.082 22.795 26.7674 22.2666 27.7252 21.5684L27.3128 21.0027Z\" fill=\"currentColor\"></path>\n                            <path d=\"M16.25 35.4855H19.0749C20.3385 35.4855 21.6157 35.6171 22.8454 35.8705C25.0207 36.3186 27.3111 36.3729 29.5087 36.0172C30.5922 35.8418 31.6576 35.5736 32.6218 35.1082C33.4924 34.688 34.5587 34.0958 35.2749 33.4324C35.9901 32.77 36.735 31.6858 37.2637 30.8384C37.717 30.1118 37.4977 29.2202 36.7807 28.6788C35.9841 28.0774 34.8021 28.0775 34.0058 28.6791L31.7468 30.3855C30.8713 31.0469 29.915 31.6557 28.7757 31.8374C28.6388 31.8592 28.4952 31.8791 28.3454 31.8965M28.3454 31.8965C28.3004 31.9017 28.2547 31.9067 28.2085 31.9115M28.3454 31.8965C28.5277 31.8574 28.7087 31.7451 28.8784 31.5969C29.6824 30.8951 29.7333 29.7125 29.0357 28.9289C28.8738 28.7471 28.6844 28.5955 28.4738 28.4699C24.9772 26.3843 19.5368 27.9728 16.25 30.3036M28.3454 31.8965C28.2998 31.9063 28.2541 31.9115 28.2085 31.9115M28.2085 31.9115C27.5543 31.9786 26.789 31.996 25.9397 31.9158\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"></path>\n                            <rect x=\"12.5\" y=\"27.5\" width=\"3.75\" height=\"10\" rx=\"1.875\" stroke=\"currentColor\" stroke-width=\"1.4\"></rect>\n                        </svg>",
+            "title": "For those who value convenience",
+            "text": "Easy to carry, simple to store, and always a pleasure to share."
+          }
+        }
+      },
+      "block_order": [
+        "card_bRDtAN",
+        "card_KF68r9",
+        "card_tf4Xd3"
+      ],
+      "name": "About cards",
+      "settings": {
+        "title": "Who It’s for"
+      }
+    },
+    "choose_kQkrNc": {
+      "type": "choose",
+      "blocks": {
+        "text_block_FP6gdg": {
+          "type": "text_block",
+          "settings": {
+            "column": "left",
+            "text": "Direct supply from farmers"
+          }
+        },
+        "text_block_jyweNU": {
+          "type": "text_block",
+          "settings": {
+            "column": "left",
+            "text": "100% natural ingredients"
+          }
+        },
+        "text_block_TGzq6r": {
+          "type": "text_block",
+          "settings": {
+            "column": "left",
+            "text": "No additives or preservatives"
+          }
+        },
+        "text_block_TnnyHK": {
+          "type": "text_block",
+          "settings": {
+            "column": "right",
+            "text": "Wide product range"
+          }
+        },
+        "text_block_UMkzCi": {
+          "type": "text_block",
+          "settings": {
+            "column": "right",
+            "text": "Fast delivery across Europe"
+          }
+        },
+        "text_block_9YqEbP": {
+          "type": "text_block",
+          "settings": {
+            "column": "right",
+            "text": "High quality and certification"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_FP6gdg",
+        "text_block_jyweNU",
+        "text_block_TGzq6r",
+        "text_block_TnnyHK",
+        "text_block_UMkzCi",
+        "text_block_9YqEbP"
+      ],
+      "name": "Choose Block",
+      "settings": {
+        "title": "Why choose us?",
+        "image": "shopify://shop_images/choose.png"
+      }
+    },
+    "content_banner_PD39ag": {
+      "type": "content-banner",
+      "name": "Content Banner",
+      "settings": {
+        "layout": "centered",
+        "image_desktop": "shopify://shop_images/banner-about-bottom.png",
+        "image_mobile": "shopify://shop_images/banner-about-bottom-mobile.png",
+        "title": "Choose natural — for yourself or as a gift",
+        "text": "",
+        "button_text": "Go to сatalog",
+        "button_url": "shopify://collections/all",
+        "content_max_width": 500
       }
     }
   },
   "order": [
-    "main"
+    "banner-slider",
+    "about_GKaDyJ",
+    "about_cards_NYDk9M",
+    "choose_kQkrNc",
+    "content_banner_PD39ag"
   ]
 }

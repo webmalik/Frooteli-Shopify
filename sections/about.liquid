@@ -1,0 +1,111 @@
+<section class="about" data-fls-about>
+  <div class="about__wrapper">
+    {% for block in section.blocks %}
+      <div class="about__block{% if block.settings.reverse_layout %} about__block--reverce{% endif %}">
+        <div class="about__block-image">
+          {% if block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              alt="{{ block.settings.image.alt | escape }}"
+              loading="lazy"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            />
+          {% endif %}
+        </div>
+        <div class="about__block-wrapper">
+          {% if block.settings.title != blank %}
+            <h2 class="about__title">{{ block.settings.title }}</h2>
+          {% endif %}
+          <div class="about__content">
+            {% if block.settings.text1 != blank %}
+              <p class="main-text-regular">{{ block.settings.text1 }}</p>
+            {% endif %}
+            {% if block.settings.text2 != blank %}
+              <p class="main-text-regular">{{ block.settings.text2 }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About section",
+  "tag": "section",
+  "class": "section-about",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "about_block",
+      "name": "About block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Block title"
+        },
+        {
+          "type": "textarea",
+          "id": "text1",
+          "label": "First paragraph",
+          "default": "First paragraph text"
+        },
+        {
+          "type": "textarea",
+          "id": "text2",
+          "label": "Second paragraph",
+          "default": "Second paragraph text"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse_layout",
+          "label": "Reverse layout (image right)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About section",
+      "category": "About",
+      "blocks": [
+        {
+          "type": "about_block",
+          "settings": {
+            "title": "Who’s behind frooteli",
+            "text1": "We’re a small team that believes in natural snacks, honest ingredients, and simple things made with care. It all started with an idea to create a product we’d happily share with our kids, friends, or take on the road ourselves.",
+            "text2": "We carefully choose the farmers we work with: we meet them, talk to them, and see how the food you enjoy is grown. We support those who treat the land with love — because for us, it’s not about volume, it’s about quality."
+          }
+        },
+        {
+          "type": "about_block",
+          "settings": {
+            "title": "What we do",
+            "text1": "We produce natural dried fruits, berries, spices, and gift fruit boxes. No added sugar. No colorants. No preservatives. Just pure taste — nothing standing in the way of what nature intended.",
+            "text2": "We don’t mask — we reveal. Each piece holds the brightness, texture, and warmth of the season. We don’t add anything unnecessary — because we don’t believe nature needs “improving.”",
+            "reverse_layout": true
+          }
+        },
+        {
+          "type": "about_block",
+          "settings": {
+            "title": "Our approach is built on trust",
+            "text1": "We work directly with farmers who grow fruits and spices without chemicals or artificial growth boosters. We harvest only when the fruits are ripe. We don’t rush — because quality takes time.",
+            "text2": "The drying process is gentle. We don’t scorch the fruit — we preserve its flavor and texture with care. And we keep packaging simple: no plastic, no excess. Our boxes are not only tasty — they’re thoughtful and beautiful. No gloss, just care."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

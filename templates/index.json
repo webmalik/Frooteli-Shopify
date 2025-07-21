@@ -43,11 +43,127 @@
         "button_label": "Show all products",
         "button_url": "shopify://collections/dried-fruits"
       }
+    },
+    "content_banner_DkqYdQ": {
+      "type": "content-banner",
+      "name": "Content Banner",
+      "settings": {
+        "layout": "left",
+        "image_desktop": "shopify://shop_images/banner-1.png",
+        "image_mobile": "shopify://shop_images/banner-1-mobile.png",
+        "title": "Natural spices for everyday flavor",
+        "text": "We craft natural snacks with no added sugar, no colorants, and no preservatives — for those who choose health, quality, and everyday joy.",
+        "button_text": "Go to сatalog",
+        "button_url": "shopify://collections/all",
+        "content_max_width": 490
+      }
+    },
+    "choose_WCcWXN": {
+      "type": "choose",
+      "blocks": {
+        "text_block_rq9qfE": {
+          "type": "text_block",
+          "settings": {
+            "column": "left",
+            "text": "Direct supply from farmers"
+          }
+        },
+        "text_block_6BynQL": {
+          "type": "text_block",
+          "settings": {
+            "column": "left",
+            "text": "100% natural ingredients"
+          }
+        },
+        "text_block_nMbECP": {
+          "type": "text_block",
+          "settings": {
+            "column": "left",
+            "text": "No additives or preservatives"
+          }
+        },
+        "text_block_UEk3Gr": {
+          "type": "text_block",
+          "settings": {
+            "column": "right",
+            "text": "Wide product range"
+          }
+        },
+        "text_block_GiAEgC": {
+          "type": "text_block",
+          "settings": {
+            "column": "right",
+            "text": "Fast delivery across Europe"
+          }
+        },
+        "text_block_PhPp6i": {
+          "type": "text_block",
+          "settings": {
+            "column": "right",
+            "text": "High quality and certification"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_rq9qfE",
+        "text_block_6BynQL",
+        "text_block_nMbECP",
+        "text_block_UEk3Gr",
+        "text_block_GiAEgC",
+        "text_block_PhPp6i"
+      ],
+      "name": "Choose Block",
+      "settings": {
+        "title": "Why choose us?",
+        "image": "shopify://shop_images/choose.png"
+      }
+    },
+    "content_banner_w9b6zA": {
+      "type": "content-banner",
+      "name": "Content Banner",
+      "settings": {
+        "layout": "centered",
+        "image_desktop": "shopify://shop_images/banner-centerd.png",
+        "title": "Special offers for you",
+        "text": "Enjoy 3-for-2 sets, seasonal deals, and special perks for returning buyers — because natural goodness should come with a bonus.",
+        "button_text": "Explore all products",
+        "button_url": "",
+        "content_max_width": 400
+      }
+    },
+    "products_slider_LEip3p": {
+      "type": "products-slider",
+      "name": "Products slider",
+      "settings": {
+        "title": "Promo products",
+        "collection": "dried-fruits",
+        "products_limit": 6,
+        "button_label": "Show promo products",
+        "button_url": "shopify://collections/dried-fruits"
+      }
+    },
+    "content_banner_BAWQwY": {
+      "type": "content-banner",
+      "name": "Content Banner",
+      "settings": {
+        "layout": "two-columns",
+        "image_secondary": "shopify://shop_images/content-banner-two-img.png",
+        "title": "Corporate gifts by frooteli",
+        "text": "Share the taste of nature with colleagues, clients, or your team. We create thoughtful, natural gift boxes tailored to your needs and budget — beautifully packed and ready to impress.",
+        "button_text": "Contact us",
+        "button_url": "shopify://pages/contact",
+        "content_max_width": 500
+      }
     }
   },
   "order": [
     "banner_home_tG3C7h",
     "products_slider_PXzQEj",
-    "products_slider_LeaxBL"
+    "products_slider_LeaxBL",
+    "content_banner_DkqYdQ",
+    "choose_WCcWXN",
+    "content_banner_w9b6zA",
+    "products_slider_LEip3p",
+    "content_banner_BAWQwY"
   ]
 }
