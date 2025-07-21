@@ -1,0 +1,87 @@
+<section class="certificates__head" data-fls-certificates-head>
+  {% if section.settings.title != blank %}
+    <h2 class="certificates__head-title">{{ section.settings.title }}</h2>
+  {% endif %}
+  {% if section.settings.subtitle != blank %}
+    <p class="certificates__head-subtitle main-text-large">
+      {{ section.settings.subtitle }}
+    </p>
+  {% endif %}
+</section>
+
+<section class="certificates__wrapper" data-fls-certificates-wrapper>
+  {% for block in section.blocks %}
+    <div class="certificates__item">
+      <div class="certificates__image">
+        {% if block.settings.image %}
+          <img
+            src="{{ block.settings.image | image_url: width: 800 }}"
+            alt="{{ block.settings.title | escape }}"
+            loading="lazy"
+            width="{{ block.settings.image.width }}"
+            height="{{ block.settings.image.height }}"
+          />
+        {% endif %}
+      </div>
+      <div class="certificates__title">{{ block.settings.title }}</div>
+      <div class="certificates__icon">
+        {% render 'certificates-icon' %}
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Certificates",
+  "tag": "section",
+  "class": "section-certificates",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Our certificates"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "At Frooteli, we believe in transparency and proven quality. Here you’ll find all the certificates that confirm the safety, natural origin, and high standards of our products — so you can enjoy every bite with confidence."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "certificate",
+      "name": "Certificate",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Certificate image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Certificate title",
+          "default": "Natural Food Compliance Certificate"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Certificates",
+      "category": "Certificates",
+      "blocks": [
+        {
+          "type": "certificate"
+        },
+        {
+          "type": "certificate"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
