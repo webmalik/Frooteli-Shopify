@@ -8,11 +8,17 @@
  * ------------------------------------------------------------
  */
 {
-    "sections": {
-        "main": {
-            "type": "main-contact",
-            "settings": {}
-        }
-    },
-    "order": ["main"]
+  "sections": {
+    "main": {
+      "type": "main-contact",
+      "settings": {
+        "title": "Send us a message",
+        "image": "shopify://shop_images/contacts.png",
+        "privacy_url": "shopify://pages/privacy-policy"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
 }

@@ -16,21 +16,21 @@
 	  {%- form 'contact', id: 'ContactForm', class: 'contacts__form' -%}
         <div class="contacts__input">
           <label for="full"> {{ 'templates.contact.form.name' | t }} </label>
-          <input type="text" name="full" placeholder="{{ 'templates.contact.form.name_placeholder' | t }}" />
+          <input type="text" name="contact[name]" placeholder="{{ 'templates.contact.form.name_placeholder' | t }}" />
         </div>
         <div class="contacts__line">
           <div class="contacts__input">
             <label for="email"> {{ 'templates.contact.form.email' | t }} </label>
-            <input type="email" name="email" placeholder="{{ 'templates.contact.form.email_placeholder' | t }}" />
+            <input type="email" name="contact[email]" placeholder="{{ 'templates.contact.form.email_placeholder' | t }}" />
           </div>
           <div class="contacts__input">
             <label for="phone"> {{ 'templates.contact.form.phone' | t }} </label>
-            <input type="tel" name="phone" placeholder="{{ 'templates.contact.form.phone_placeholder' | t }}" />
+            <input type="tel" name="contact[phone]" placeholder="{{ 'templates.contact.form.phone_placeholder' | t }}" />
           </div>
         </div>
         <div class="contacts__input">
           <label for="message"> {{ 'templates.contact.form.comment' | t }} </label>
-          <textarea name="message" placeholder="{{ 'templates.contact.form.comment_placeholder' | t }}"></textarea>
+          <textarea name="contact[body]" placeholder="{{ 'templates.contact.form.comment_placeholder' | t }}"></textarea>
           <input type="checkbox" name="contacts-policy" id="contacts-policy" />
           <label for="contacts-policy">
             <span>{{ 'templates.contact.form.policy_text' | t }} <a href="{{ section.settings.privacy_url }}">{{ 'templates.contact.form.policy_text_link' | t }}</a></span>

@@ -1,0 +1,72 @@
+<section class="categories" data-fls-categories>
+  <h4 class="categories__header">{{ section.settings.title }}</h4>
+  <div class="categories__wrapper swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% assign collection = collections[block.settings.collection] %}
+        {% if collection != nil %}
+          <a href="{{ collection.url }}" class="categories__item swiper-slide">
+            <div class="categories__image">
+              {% if block.settings.image %}
+                <img
+                  src="{{ block.settings.image | img_url: 'master' }}"
+                  alt="{{ block.settings.image.alt | escape }}"
+                  loading="lazy"
+				  
+                />
+              {% endif %}
+            </div>
+            <div class="categories__text">
+              {{ block.settings.custom_title | default: collection.title }}
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Categories Slider",
+  "tag": "section",
+  "class": "section-categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Block title",
+      "default": "Categories"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom title (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Categories Slider",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

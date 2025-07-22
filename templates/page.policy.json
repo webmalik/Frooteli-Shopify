@@ -35,10 +35,53 @@
       }
     },
     "main": {
-      "type": "main-page",
+      "type": "main-policy",
+      "blocks": {
+        "link_wbqAN8": {
+          "type": "link",
+          "settings": {
+            "text": "Privacy Policy",
+            "url": "shopify://pages/privacy-policy"
+          }
+        },
+        "link_NKCb4F": {
+          "type": "link",
+          "settings": {
+            "text": "Cookie Policy",
+            "url": "shopify://pages/cookie-policy"
+          }
+        },
+        "link_UXaECd": {
+          "type": "link",
+          "settings": {
+            "text": "Terms of Service",
+            "url": "shopify://pages/terms-of-service"
+          }
+        },
+        "link_aYw7Gj": {
+          "type": "link",
+          "settings": {
+            "text": "Shipping Policy",
+            "url": "shopify://pages/shipping-policy"
+          }
+        },
+        "link_7bxR3w": {
+          "type": "link",
+          "settings": {
+            "text": "Refund Policy",
+            "url": "shopify://pages/refund-policy"
+          }
+        }
+      },
+      "block_order": [
+        "link_wbqAN8",
+        "link_NKCb4F",
+        "link_UXaECd",
+        "link_aYw7Gj",
+        "link_7bxR3w"
+      ],
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "title": "Our Policies"
       }
     }
   },

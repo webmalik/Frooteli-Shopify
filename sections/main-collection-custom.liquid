@@ -1,0 +1,111 @@
+{% paginate collection.products by 12 %}
+<section id="main-collection-custom" data-id="main-collection-custom" class="catalog section">
+  <div class="catalog__wrapper">
+	<div class="catalog__filter-bg"></div>
+    <div class="catalog__filter-mobile">
+      {% render 'filter-mobile' %}
+      Filter
+    </div>
+    <div class="catalog__filter">
+		<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+  		<facet-filters-form>
+			<form id="FacetFiltersForm" class="catalog__filter-wrapper" is="facet-filters-form">
+			<div class="catalog__filter-header">
+				Filters
+				<span class="catalog__filter-close">{% render 'filter-close' %}</span>
+			</div>
+
+			<div data-fls-spollers class="catalog__filter-items">
+				{% for filter in collection.filters %}
+				<details
+					class="catalog__filter-item js-filter"
+					id="Details-{{ filter.param_name }}-{{ section.id }}"
+					data-fls-spollers-open
+				>
+					<summary class="catalog__filter-title">{{ filter.label }}</summary>
+					<div class="catalog__filter-body">
+					{% assign sorted_values = filter.values %}
+					{% if filter.operator == 'AND' %}
+						{% assign active_values = filter.values | where: 'active', true %}
+						{% assign inactive_values = filter.values | where: 'active', false %}
+						{% assign sorted_values = active_values | concat: inactive_values %}
+					{% endif %}
+
+					{% for value in sorted_values %}
+						{% assign input_id = 'filter-' | append: filter.param_name | append: '-' | append: value.value | handle %}
+						{% assign is_disabled = false %}
+						{% if value.count == 0 and value.active == false %}
+						{% assign is_disabled = true %}
+						{% endif %}
+
+						<div class="catalog__filter-position">
+						<input
+							type="checkbox"
+							id="{{ input_id }}"
+							name="{{ value.param_name }}"
+							value="{{ value.value }}"
+							{% if value.active %}checked{% endif %}
+							{% if is_disabled %}disabled{% endif %}
+						>
+						<label for="{{ input_id }}">{{ value.label }}</label>
+						</div>
+					{% endfor %}
+					</div>
+				</details>
+				{% endfor %}
+			</div>
+			<noscript>
+				<button type="submit" class="button">Застосувати</button>
+			</noscript>
+			</form>
+  		</facet-filters-form>
+    </div>
+
+    <!-- товари -->
+    <div class="catalog__inner">
+      <div id="ProductGridContainer" data-section-id="{{ section.id }}" data-id="main-collection-custom">
+       <div id="product-grid" class="collection catalog__grid" data-id="{{ section.id }}">
+		{% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+		</div>
+      </div>
+
+      <!-- пагінація -->
+	  {% if paginate.pages > 1 %}
+      <div class="catalog__pagination">
+        <div class="catalog__pagination-buttons">
+          <a href="{{ collection.url }}" data-page-link class="{% if paginate.current_page > 1 %}enable{% else %}disabled{% endif %}">
+            {% render 'paginate-first' %}
+          </a>
+          {% if paginate.previous %}
+            <a href="{{ paginate.previous.url }}" data-page-link class="enable">{% render 'paginate-prev' %}</a>
+          {% else %}
+            <a class="disabled">{% render 'paginate-prev' %}</a>
+          {% endif %}
+        </div>
+        <div class="catalog__pagination-pages">
+          {% for part in paginate.parts %}
+            {% if part.is_link %}
+              <a href="{{ part.url }}" data-page-link>{{ part.title }}</a>
+            {% else %}
+              <span class="active">{{ part.title }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="catalog__pagination-buttons">
+          {% if paginate.next %}
+            <a href="{{ paginate.next.url }}" data-page-link class="enable">{% render 'paginate-next' %}</a>
+          {% else %}
+            <a class="disabled">{% render 'paginate-next' %}</a>
+          {% endif %}
+          <a href="{{ collection.url }}?page={{ paginate.pages }}" data-page-link class="{% if paginate.current_page < paginate.pages %}enable{% else %}disabled{% endif %}">
+            {% render 'paginate-last' %}
+          </a>
+        </div>
+      </div>
+	{% endif %}
+    </div>
+  </div>
+</section>
+{% endpaginate %}

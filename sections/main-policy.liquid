@@ -1,0 +1,68 @@
+{% assign content = page.content %}
+
+{% assign content = content
+  | replace: '[block]', '<div class="policy__block">'
+  | replace: '[/block]', '</div>'
+  | replace: '[title]', '<h4 class="policy__title">'
+  | replace: '[/title]', '</h4>'
+  | replace: '[text]', '<div class="policy__text main-text-regular">'
+  | replace: '[/text]', '</div>'
+  | replace: '[list]', '<ul>'
+  | replace: '[/list]', '</ul>'
+  | replace: '[item]', '<li>'
+  | replace: '[/item]', '</li>'
+%}
+
+<section class="policy__wrapper">
+  {{ content }}
+</section>
+
+<section class="policy__nav">
+	<h2 class="policy__nav-title">Our Policies</h2>
+	<div class="policy__nav-wrapper">
+		{% for block in section.blocks %}
+		<a href="{{ block.settings.url }}"
+			class="policy__nav-button{% if block.settings.url contains page.handle %} active{% endif %}">
+			{{ block.settings.text }}
+		</a>
+		{% endfor %}
+	</div>
+</section>
+{% schema %}
+{
+  "name": "Policy navigation",
+  "settings": [
+	{
+          "type": "text",
+          "id": "title",
+          "label": "Title nav",
+          "default": "Our Policies"
+        },
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Policy link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link text",
+          "default": "Privacy Policy"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL",
+        },
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Policy navigation",
+    }
+  ]
+}
+{% endschema %}
