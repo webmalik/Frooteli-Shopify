@@ -4,14 +4,14 @@
 	<div class="catalog__filter-bg"></div>
     <div class="catalog__filter-mobile">
       {% render 'filter-mobile' %}
-      Filter
+      {{'products.facets.mobile_button_text' | t}}
     </div>
     <div class="catalog__filter">
 		<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
   		<facet-filters-form>
 			<form id="FacetFiltersForm" class="catalog__filter-wrapper" is="facet-filters-form">
 			<div class="catalog__filter-header">
-				Filters
+				{{'products.facets.title' | t}}
 				<span class="catalog__filter-close">{% render 'filter-close' %}</span>
 			</div>
 

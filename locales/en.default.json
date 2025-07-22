@@ -192,6 +192,8 @@
             "label": "Media gallery"
         },
         "facets": {
+            "title": "Filters",
+            "mobile_button_text": "Filter",
             "filter_and_operator_subtitle": "Match all",
             "apply": "Apply",
             "clear": "Clear",

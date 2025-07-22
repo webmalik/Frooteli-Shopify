@@ -87,6 +87,10 @@
     z-index: 48;
 }
 
+.product__slider {
+    position: sticky;
+}
+
 @media (max-width: 61.9988em) {
     .contacts__image {
         aspect-ratio: 1/1;
