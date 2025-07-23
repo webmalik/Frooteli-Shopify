@@ -1,3 +1,5 @@
+{% assign collection = product.collections.first %}
+
 <section class="product">
   <div class="product__wrapper">
     <div class="product__images">
@@ -20,7 +22,7 @@
       <div class="product__info">
         <div class="product__breadcrumbs caption-small">
           <a href="/">Home</a>
-          <a href="/collections/{{ collection.handle }}">Shop all</a>
+          <a href="/collections/{{ collection.handle }}">{{ collection.title }}</a>
           <span>{{ product.title }}</span>
         </div>
         <div class="product__header">
@@ -30,85 +32,127 @@
           </div>
         </div>
 
-        <div class="product__labels">
-          {% for block in section.blocks %}
-            {% if block.type == 'label' %}
-              <div class="product__label">
-                <img src="{{ block.settings.icon | img_url: 'master' }}" alt="">
-                <span>{{ block.settings.text }}</span>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
+		{% assign metaobject_list = product.metafields.custom.icon_and_text_for_product.value %}
+		{% if metaobject_list != blank %}
+			<div class="product__labels">
+				{% for item in metaobject_list %}
+					<div class="product__label">
+						<img src="{{ item.icon | image_url: width: 100}}" alt="{{ item.text | escape }}">
+						<span>{{ item.text }}</span>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
 
         <div class="product__cost">
           <div class="product__price">
             {{ product.price | money }}
           </div>
-          <div class="product__for-price">{{ section.settings.price_note }}</div>
+		{% if product.metafields.custom.price_suffix %}
+			<div class="product__for-price">{{ product.metafields.custom.price_suffix }}</div>
+		{% elsif section.settings.price_note != blank %}
+			<div class="product__for-price">{{ section.settings.price_note }}</div>
+		{% endif %}
         </div>
 
-        <div class="product__controls">
-          <!-- Кількість + кнопка -->
-          <quantity-input class="product__counter">
-            <button class="product__minus" type="button" name="minus">−</button>
-            <div class="product__count">
-              <input type="number" value="1" min="1" name="quantity">
-            </div>
-            <button class="product__plus" type="button" name="plus">+</button>
-          </quantity-input>
-          <button
-            type="submit"
-            class="product__button button button--primary"
-            onclick="window.flsCart.open()">
-            {{ 'products.product.add_to_cart' | t }}
-          </button>
-        </div>
+        <form method="post" action="/cart/add" class="product__form" id="AddToCartForm-{{ product.id }}">
+			<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+			<div class="product__controls">
+				<div class="product__counter">
+					<div class="product__minus">
+						{% render 'product-minus' %}
+					</div>
+					<div class="product__count">
+						<input type="text" name="quantity" value="1" />
+					</div>
+					<div class="product__plus">
+						{% render 'product-plus' %}
+					</div>
+				</div>
+				<button
+				type="submit"
+				class="product__button button button--primary">
+				{{ 'products.product.add_to_cart' | t }}
+				</button>
+			</div>
+		</form>
       </div>
 
       <div class="product__also">
         <h3 class="product__also-header">{{ section.settings.also_title }}</h3>
-        <div class="product__also-wrapper">
-          {% for block in section.blocks %}
-            {% if block.type == 'also' %}
-              <div class="product__also-item">
-                <div class="product__also-item-content">
-                  <div class="product__also-image">
-                    <img src="{{ block.settings.image | img_url: '240x240' }}" alt="">
-                  </div>
-                  <div class="product__also-info">
-                    <p>{{ block.settings.title }}</p>
-                    <p>{{ block.settings.price }}</p>
-                  </div>
-                </div>
-                <a href="{{ block.settings.link }}" class="product__also-button">
-                  <svg width="61" height="60" viewBox="0 0 61 60" fill="none">
-                    <rect width="60" height="60" rx="30" fill="#013501"/>
-                    <path d="M22.8 30H39.2" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
-                    <path d="M31 38.2V21.8" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
-                  </svg>
-                </a>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
+        <div class="product__also-wrapper">		
+			{% if collection %}
+				{% assign related_products = collection.products %}
+				{% assign counter = 0 %}
+				{% for item in related_products %}
+				{% unless item.id == product.id %}
+					<div class="product__also-item" >
+						<div class="product__also-item-content" onclick="window.location.href='{{ item.url }}'">
+							<div class="product__also-image">
+								<img src="{{ item.featured_image | img_url: '240x240' }}" alt="{{ item.title | escape }}">
+							</div>
+							<div class="product__also-info">
+								<p>{{ item.title }}</p>
+								<p>{{ item.price | money }}</p>
+							</div>
+						</div>
+						<form method="post" action="/cart/add" id="AddToCartForm-{{ item.id }}">
+							<input type="hidden" name="id" value="{{ item.selected_or_first_available_variant.id }}">
+								<button
+								type="submit"
+								class="product__also-button">
+								<svg width="61" height="60" viewBox="0 0 61 60" fill="none">
+									<rect width="60" height="60" rx="30" fill="#013501"/>
+									<path d="M22.8 30H39.2" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+									<path d="M31 38.2V21.8" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+								</svg>
+								</button>
+						</form>
+					</div>
+
+					{% assign counter = counter | plus: 1 %}
+					{% if counter == 2 %}
+						{% break %}
+					{% endif %}
+					{% endunless %}
+				{% endfor %}
+			{% endif %}
+			</div>
       </div>
     </div>
   </div>
 </section>
+{% assign spollers = product.metafields.custom.spollers_in_product.value %}
+{% assign has_blocks = section.blocks | where: "type", "spoller" | size %}
 
-<section data-fls-spollers class="product-spollers">
-  {% for block in section.blocks %}
-    {% if block.type == 'spoller' %}
+{% if spollers%}
+  <section data-fls-spollers class="product-spollers">
+    {% for spoller in spollers %}
       <details class="product-spollers__item">
-        <summary class="product-spollers__title">{{ block.settings.title }}</summary>
+        <summary class="product-spollers__title">
+          {{ spoller.title }}
+        </summary>
         <div class="product-spollers__body">
-          {{ block.settings.content }}
+          {{ spoller.text }}
         </div>
       </details>
-    {% endif %}
-  {% endfor %}
-</section>
+    {% endfor %}
+  </section>
+{% elsif has_blocks > 0 %}
+  <section data-fls-spollers class="product-spollers">
+	{% for block in section.blocks %}
+		{% if block.type == 'spoller' %}
+		<details class="product-spollers__item">
+			<summary class="product-spollers__title">{{ block.settings.title }}</summary>
+			<div class="product-spollers__body">
+			{{ block.settings.content }}
+			</div>
+		</details>
+		{% endif %}
+	{% endfor %}
+	</section>
+{% endif %}
 
 {% schema %}
 {
@@ -123,7 +167,8 @@
     {
       "type": "text",
       "id": "price_note",
-      "label": "Price note (e.g., / per 200 g)"
+      "label": "Price note (e.g., / per 200 g)",
+	  "default": "/ per 200 g"
     },
     {
       "type": "text",
@@ -133,48 +178,6 @@
     }
   ],
   "blocks": [
-    {
-      "type": "label",
-      "name": "Product label",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon"
-        },
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Label text"
-        }
-      ]
-    },
-    {
-      "type": "also",
-      "name": "Also bought item",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Product image"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Product title"
-        },
-        {
-          "type": "text",
-          "id": "price",
-          "label": "Price text"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        }
-      ]
-    },
     {
       "type": "spoller",
       "name": "Spoiler block",

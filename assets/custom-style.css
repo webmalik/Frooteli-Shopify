@@ -91,6 +91,18 @@
     position: sticky;
 }
 
+.product__also-item-content {
+    cursor: pointer;
+}
+
+.product__form {
+    width: 100%;
+}
+
+.product-spollers {
+    margin-bottom: 0;
+}
+
 @media (max-width: 61.9988em) {
     .contacts__image {
         aspect-ratio: 1/1;
@@ -101,5 +113,14 @@
 
     .footer__message {
         bottom: -55px;
+    }
+
+    .product-recomendations__button-mobile-hidden {
+        display: none;
+    }
+}
+@media (min-width: 61.9988em) {
+    .product-recomendations__mobile-button {
+        display: none;
     }
 }

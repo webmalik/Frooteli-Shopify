@@ -11,8 +11,8 @@
 			{{ section.settings.heading }}
 			</h2>
 			<a href="{{ section.settings.button_url }}"
-				data-fls-dynamic=".product-recomendations, 992, 3"
-				class="product-recomendations__button button button--green">
+				data-fls-dynamic=".product-recomendations__mobile-button, 992, 1"
+				class="product-recomendations__button product-recomendations__button-mobile-hidden button button--green">
 				{{ section.settings.button_text }}
 			</a>
 			<div class="product-recomendations__nav slider-nav">
@@ -34,9 +34,29 @@
 			{% endfor %}
 			</div>
 		</div>
+		<div class="product-recomendations__mobile-button">
+			<a href="{{ section.settings.button_url }}"
+				class="product-recomendations__button button button--green">
+				{{ section.settings.button_text }}
+			</a>
+		</div>
 	</section>
-
 </product-recommendations>
+<script>
+	const observer = new MutationObserver(() => {
+		if (typeof window.recomendationSlider === 'function') {
+			const slider = document.querySelector('.product-recomendations__slider');
+			if (slider && !slider.classList.contains('swiper-initialized')) {
+				window.recomendationSlider();
+			}
+		}
+	});
+
+	observer.observe(document.body, {
+		childList: true,
+		subtree: true,
+	});
+</script>
 {% schema %}
 {
   "name": "Custom Related Products",

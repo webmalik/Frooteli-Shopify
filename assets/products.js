@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isRequestInProgress = false;
     const DEBOUNCE_DELAY = 500;
 
-    const addToCart = async (variantId, button) => {
+    const addToCart = async (variantId, quantity, button) => {
         if (isRequestInProgress) return;
         isRequestInProgress = true;
 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json',
                     Accept: 'application/json',
                 },
-                body: JSON.stringify({ id: variantId, quantity: 1 }),
+                body: JSON.stringify({ id: variantId, quantity }),
             });
 
             if (!res.ok) {
@@ -26,9 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await res.json();
 
-            // Відкрити міні-корзину
             window.flsCart?.open?.();
-
             document.dispatchEvent(new CustomEvent('cart:added', { detail: { product: data } }));
         } catch (err) {
             console.error('Add to cart failed:', err.message);
@@ -42,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     document.body.addEventListener('click', (e) => {
-        const button = e.target.closest('.card__button');
+        const button = e.target.closest('.card__button, .product__button, .product__also-button');
         if (!button) return;
 
         const form = button.closest('form');
@@ -54,7 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const variantId = variantInput.value;
         if (!variantId) return;
 
+        // 🔍 Отримуємо кількість
+        const quantityInput = form.querySelector('input[name="quantity"]');
+        const quantity = quantityInput ? parseInt(quantityInput.value, 10) || 1 : 1;
+
         e.preventDefault();
-        addToCart(variantId, button);
+        addToCart(variantId, quantity, button);
     });
 });
