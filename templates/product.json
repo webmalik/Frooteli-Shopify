@@ -12,92 +12,53 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
+        "spoller_kG4KtF": {
+          "type": "spoller",
           "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
+            "title": "Product description",
+            "content": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ex doloremque nemo accusantium, qui praesentium, aliquid velit aperiam consequuntur voluptatem amet iste alias adipisci? Molestias eaque esse facere libero quisquam eius quam dolore aliquid, fuga itaque magnam fugit nostrum consequuntur odit ipsum quibusdam eum sapiente saepe laborum provident maxime! Beatae, officia ratione reprehenderit ea temporibus earum blanditiis, libero, iure expedita commodi atque. Illo pariatur similique sed reiciendis numquam eius fugit libero sequi labore delectus! Quis doloribus quidem possimus autem omnis aspernatur voluptates? Eos commodi incidunt deserunt modi similique in necessitatibus ratione quasi! Sit, a odio vel reprehenderit possimus voluptas ducimus dolore quo voluptate, libero facilis, nulla illo eveniet ad est!</p>"
           }
         },
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
+        "spoller_i6XCLX": {
+          "type": "spoller",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
+            "title": "Storage guide",
+            "content": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ex doloremque nemo accusantium, qui praesentium, aliquid velit aperiam consequuntur voluptatem amet iste alias adipisci? Molestias eaque esse facere libero quisquam eius quam dolore aliquid, fuga itaque magnam fugit nostrum consequuntur odit ipsum quibusdam eum sapiente saepe laborum provident maxime! Beatae, officia ratione reprehenderit ea temporibus earum blanditiis, libero, iure expedita commodi atque. Illo pariatur similique sed reiciendis numquam eius fugit libero sequi labore delectus! Quis doloribus quidem possimus autem omnis aspernatur voluptates? Eos commodi incidunt deserunt modi similique in necessitatibus ratione quasi! Sit, a odio vel reprehenderit possimus voluptas ducimus dolore quo voluptate, libero facilis, nulla illo eveniet ad est!</p>"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
+        "spoller_y8jQhQ": {
+          "type": "spoller",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "title": "Shipping info",
+            "content": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ex doloremque nemo accusantium, qui praesentium, aliquid velit aperiam consequuntur voluptatem amet iste alias adipisci? Molestias eaque esse facere libero quisquam eius quam dolore aliquid, fuga itaque magnam fugit nostrum consequuntur odit ipsum quibusdam eum sapiente saepe laborum provident maxime! Beatae, officia ratione reprehenderit ea temporibus earum blanditiis, libero, iure expedita commodi atque. Illo pariatur similique sed reiciendis numquam eius fugit libero sequi labore delectus! Quis doloribus quidem possimus autem omnis aspernatur voluptates? Eos commodi incidunt deserunt modi similique in necessitatibus ratione quasi! Sit, a odio vel reprehenderit possimus voluptas ducimus dolore quo voluptate, libero facilis, nulla illo eveniet ad est!</p>"
           }
         },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "share": {
-          "type": "share",
+        "spoller_ADdBpH": {
+          "type": "spoller",
           "settings": {
-            "share_label": "Share"
+            "title": "Payment Details",
+            "content": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ex doloremque nemo accusantium, qui praesentium, aliquid velit aperiam consequuntur voluptatem amet iste alias adipisci? Molestias eaque esse facere libero quisquam eius quam dolore aliquid, fuga itaque magnam fugit nostrum consequuntur odit ipsum quibusdam eum sapiente saepe laborum provident maxime! Beatae, officia ratione reprehenderit ea temporibus earum blanditiis, libero, iure expedita commodi atque. Illo pariatur similique sed reiciendis numquam eius fugit libero sequi labore delectus! Quis doloribus quidem possimus autem omnis aspernatur voluptates? Eos commodi incidunt deserunt modi similique in necessitatibus ratione quasi! Sit, a odio vel reprehenderit possimus voluptas ducimus dolore quo voluptate, libero facilis, nulla illo eveniet ad est!</p>"
           }
         }
       },
       "block_order": [
-        "vendor",
-        "title",
-        "price",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
+        "spoller_kG4KtF",
+        "spoller_i6XCLX",
+        "spoller_y8jQhQ",
+        "spoller_ADdBpH"
       ],
       "settings": {
-        "enable_sticky_info": true,
-        "color_scheme": "scheme-1",
-        "media_size": "large",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "gallery_layout": "stacked",
-        "mobile_thumbnails": "hide",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": true,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
+        "product_description": "",
+        "price_note": "/ per 200 g",
+        "also_title": "Customers also bought"
       }
     },
     "related-products": {
       "type": "related-products",
       "settings": {
         "heading": "You may also like",
-        "heading_size": "h2",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "padding_top": 36,
-        "padding_bottom": 28
+        "button_text": "Show all products",
+        "button_url": ""
       }
     }
   },

@@ -447,15 +447,17 @@
         "log_out": "Log out",
         "login_page": {
             "cancel": "Cancel",
-            "create_account": "Create account",
-            "email": "Email",
+            "create_account": "Don’t have an account?",
+            "email": "Email address",
             "forgot_password": "Forgot your password?",
             "guest_continue": "Continue",
             "guest_title": "Continue as a guest",
             "password": "Password",
             "title": "Login",
             "sign_in": "Sign in",
-            "submit": "Submit",
+            "submit": "Login",
+            "remember_me": "Remember me",
+            "register": "Sign up",
             "alternate_provider_separator": "or"
         },
         "order": {
