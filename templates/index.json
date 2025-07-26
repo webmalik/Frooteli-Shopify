@@ -50,7 +50,7 @@
       "settings": {
         "layout": "left",
         "image_desktop": "shopify://shop_images/banner-1.png",
-        "image_mobile": "shopify://shop_images/banner-1-mobile.png",
+        "image_mobile": "shopify://shop_images/banner-1.png",
         "title": "Natural spices for everyday flavor",
         "text": "We craft natural snacks with no added sugar, no colorants, and no preservatives — for those who choose health, quality, and everyday joy.",
         "button_text": "Go to сatalog",
@@ -123,7 +123,8 @@
       "name": "Content Banner",
       "settings": {
         "layout": "centered",
-        "image_desktop": "shopify://shop_images/banner-centerd.png",
+        "image_desktop": "shopify://shop_images/content-banner-center.png",
+        "image_mobile": "shopify://shop_images/content-banner-center-mobile.png",
         "title": "Special offers for you",
         "text": "Enjoy 3-for-2 sets, seasonal deals, and special perks for returning buyers — because natural goodness should come with a bonus.",
         "button_text": "Explore all products",

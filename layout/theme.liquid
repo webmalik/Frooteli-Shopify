@@ -146,8 +146,14 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 	</div>
+	{% if customer %}
+		<script>
+			window.customer = {{ customer.id }};
+		</script>
+	{% endif %}
 	<script src="{{ 'app.min.js' | asset_url }}" type="module" defer="defer"></script>
 	<script src="{{ 'products.js' | asset_url }}" defer="defer"></script>
+	<script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
 	
   </body>
 </html>

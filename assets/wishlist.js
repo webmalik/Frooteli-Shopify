@@ -283,7 +283,7 @@ async function fetchAllProducts() {
 }
 
 async function renderWishlist() {
-    const container = document.querySelector('.wishlistpanel__content');
+    const container = document.querySelector('.account__content-wishlist');
     if (!container) return;
 
     const ids = getLocalWishlist().map(Number);
@@ -314,9 +314,7 @@ async function renderWishlist() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initWishlist();
-
-    // Якщо є контейнер — рендеримо повний список
-    if (document.querySelector('.wishlistpanel__content')) {
+    if (document.querySelector('.account__content-wishlist')) {
         renderWishlist();
     }
 });

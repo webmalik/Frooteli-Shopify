@@ -6,7 +6,7 @@
 			<div class="card__label">{{ tag }}</div>
 		{% endfor %}
       </div>
-      <div class="card__wishlist">
+      <div class="card__wishlist wishlist-button" data-id="{{ product.id }}">
         {% render 'icon-wishlist' %}
       </div>
     </div>

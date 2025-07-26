@@ -220,7 +220,8 @@
       "filter_selected_accessibility": "{{ type }} ({{ count }} Filter ausgewählt)",
       "show_more": "Mehr anzeigen",
       "show_less": "Weniger anzeigen",
-      "filter_and_operator_subtitle": "Allen entsprechen"
+      "filter_and_operator_subtitle": "Allen entsprechen",
+      "title": "Filter"
     }
   },
   "templates": {
@@ -254,7 +255,11 @@
       "pages": "Seiten"
     },
     "cart": {
-      "cart": "Warenkorb"
+      "cart": "Warenkorb",
+      "title": "Warenkorb",
+      "subtotal": "Zwischensumme",
+      "notice": "Gutscheine und Endkosten werden im nächsten Schritt berechnet",
+      "checkout": "Kasse"
     },
     "contact": {
       "form": {
@@ -265,7 +270,10 @@
         "send": "Senden",
         "post_success": "Danke, dass du uns kontaktiert hast. Wir werden uns so schnell wie möglich bei dir melden.",
         "error_heading": "Bitte passe Folgendes an:",
-        "title": "Kontaktformular"
+        "title": "Kontaktformular",
+        "comment_placeholder": "Ihre Nachricht",
+        "policy_text": "Stimmen Sie mit unserem",
+        "policy_text_link": "Datenschutzrichtlinie"
       }
     },
     "404": {
@@ -396,7 +404,12 @@
       "title": "Konto",
       "details": "Kontodetails",
       "view_addresses": "Adressen anzeigen",
-      "return": "Zurück zu Kontodetails"
+      "return": "Zurück zu Kontodetails",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "address": "Adresse",
+      "edit": "Bearbeiten",
+      "delete": "Löschen"
     },
     "account_fallback": "Konto",
     "activate_account": {
@@ -443,7 +456,11 @@
       "title": "Login",
       "sign_in": "Anmelden",
       "submit": "Senden",
-      "alternate_provider_separator": "oder"
+      "alternate_provider_separator": "oder",
+      "remember_me": "Erinnere dich an mich",
+      "register": "Melden Sie sich an",
+      "reset_submit": "Anweisungen zum Zurücksetzen senden",
+      "error": " Die eingegebene E-Mail-Adresse oder das Passwort ist falsch. Bitte versuchen Sie es erneut."
     },
     "orders": {
       "title": "Bestellhistorie",
@@ -466,7 +483,11 @@
       "last_name": "Nachname",
       "email": "E-Mail",
       "password": "Passwort",
-      "submit": "Erstellen"
+      "submit": "Erstellen",
+      "have_account": "Hast du schon ein Konto?",
+      "agree": "Stimmen Sie mit unserem",
+      "privacy": "Datenschutzrichtlinie",
+      "success": "Ihr Konto wurde erfolgreich erstellt. Bitte überprüfen Sie Ihre E-Mails, um Ihr Konto zu aktivieren."
     },
     "reset_password": {
       "title": "Passwort für Konto zurücksetzen",
@@ -499,7 +520,21 @@
       "tracking_number": "Trackingnummer",
       "subtotal": "Zwischensumme",
       "total_duties": "Zollgebühren",
-      "total_refunded": "Zurückerstattet"
+      "total_refunded": "Zurückerstattet",
+      "checkout": "Kasse"
+    },
+    "account_nav": {
+      "title": "Hallo,",
+      "my_profile": "Mein Profil",
+      "my_orders": "Bestellungen",
+      "my_wishlist": "Gespeicherte Artikel",
+      "log_in": "Einloggen",
+      "log_out": "Ausloggen",
+      "create_account": "Benutzerkonto erstellen"
+    },
+    "account_content": {
+      "order_title": "Bestellverlaufsliste",
+      "wishlist_title": "Meine Merkliste"
     }
   },
   "gift_cards": {
@@ -532,6 +567,23 @@
       "send_on_label": "Senden am (optional)",
       "expanded": "Formular für den Empfänger des Gutscheins erweitert",
       "collapsed": "Formular für den Empfänger des Gutscheins minimiert"
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "local_pickup": {
+        "location_information_next": {
+          "one": "Es gibt %{count} Standorte mit Lagerbestand in Ihrer Nähe",
+          "other": "Es gibt %{count} Standorte mit Lagerbestand in Ihrer Nähe"
+        }
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "signature_mismatch": "Die Warensignatur stimmt für die Zeile {{stable_id}} nicht überein."
+          }
+        }
+      }
     }
   }
 }

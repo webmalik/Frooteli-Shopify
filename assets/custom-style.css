@@ -113,7 +113,9 @@
     flex-direction: column;
     justify-content: space-between;
 }
-
+.card__wishlist.active path.svg-fill {
+    opacity: 1;
+}
 @media (max-width: 61.9988em) {
     .contacts__image {
         aspect-ratio: 1/1;

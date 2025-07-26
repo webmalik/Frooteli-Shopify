@@ -8,115 +8,121 @@
  * ------------------------------------------------------------
  */
 {
-    "sections": {
-        "banner_slider_fjzUb8": {
-            "type": "banner-slider",
-            "blocks": {
-                "slide_dQqTWH": {
-                    "type": "slide",
-                    "settings": {
-                        "title": "New: lemon and herb spice mix",
-                        "text": "A clean, flavorful touch to your meals — no sugar, no additives.",
-                        "image_desktop": "shopify://shop_images/banner-1.png",
-                        "image_mobile": "shopify://shop_images/banner-1-mobile.png",
-                        "image_alt": "Banner image",
-                        "max_width": 800,
-                        "show_button": true,
-                        "button_label": "Shop now",
-                        "button_url": "#"
-                    }
-                },
-                "slide_QJ7Rty": {
-                    "type": "slide",
-                    "settings": {
-                        "title": "New: lemon and herb spice mix",
-                        "text": "A clean, flavorful touch to your meals — no sugar, no additives.",
-                        "image_desktop": "shopify://shop_images/banner-about.png",
-                        "image_mobile": "shopify://shop_images/banner-about-mobile.png",
-                        "image_alt": "Banner image",
-                        "max_width": 710,
-                        "show_button": true,
-                        "button_label": "Shop now",
-                        "button_url": ""
-                    }
-                }
-            },
-            "block_order": ["slide_dQqTWH", "slide_QJ7Rty"],
-            "name": "Banner slider",
-            "settings": {
-                "layout": "default",
-                "hide_images": "no"
-            }
+  "sections": {
+    "banner_slider_fjzUb8": {
+      "type": "banner-slider",
+      "blocks": {
+        "slide_dQqTWH": {
+          "type": "slide",
+          "settings": {
+            "title": "New: lemon and herb spice mix",
+            "text": "A clean, flavorful touch to your meals — no sugar, no additives.",
+            "image_desktop": "shopify://shop_images/banner-1.png",
+            "image_mobile": "shopify://shop_images/banner-1-mobile.png",
+            "image_alt": "Banner image",
+            "max_width": 800,
+            "show_button": true,
+            "button_label": "Shop now",
+            "button_url": "#"
+          }
         },
-        "categories": {
-            "type": "categories",
-            "blocks": {
-                "category_i7gmTE": {
-                    "type": "category",
-                    "settings": {
-                        "collection": "dried-fruits",
-                        "image": "shopify://shop_images/1_455233ee-9582-46ed-82e4-9572a5d00ea1.png",
-                        "custom_title": ""
-                    }
-                },
-                "category_UTQpXL": {
-                    "type": "category",
-                    "settings": {
-                        "collection": "dried-berries",
-                        "image": "shopify://shop_images/2_63c3bed1-edcd-4a03-a259-a8a080889334.png",
-                        "custom_title": ""
-                    }
-                },
-                "category_r8xLEK": {
-                    "type": "category",
-                    "settings": {
-                        "collection": "nuts",
-                        "image": "shopify://shop_images/3_04e586e8-b216-4d84-b82d-d316bb4ca656.png",
-                        "custom_title": ""
-                    }
-                },
-                "category_EJdAwd": {
-                    "type": "category",
-                    "settings": {
-                        "collection": "natural-spices",
-                        "image": "shopify://shop_images/4.png",
-                        "custom_title": ""
-                    }
-                },
-                "category_TCpbYM": {
-                    "type": "category",
-                    "settings": {
-                        "collection": "gift-boxes",
-                        "image": "shopify://shop_images/5.png",
-                        "custom_title": ""
-                    }
-                },
-                "category_KTFT9G": {
-                    "type": "category",
-                    "settings": {
-                        "collection": "promo-products",
-                        "image": "shopify://shop_images/6.png",
-                        "custom_title": ""
-                    }
-                }
-            },
-            "block_order": [
-                "category_i7gmTE",
-                "category_UTQpXL",
-                "category_r8xLEK",
-                "category_EJdAwd",
-                "category_TCpbYM",
-                "category_KTFT9G"
-            ],
-            "settings": {
-                "title": "Categories"
-            }
-        },
-        "product-collection-custom": {
-            "type": "main-collection-custom",
-            // "type": "main-collection-product-grid",
-            "settings": {}
+        "slide_QJ7Rty": {
+          "type": "slide",
+          "settings": {
+            "title": "New: lemon and herb spice mix",
+            "text": "A clean, flavorful touch to your meals — no sugar, no additives.",
+            "image_desktop": "shopify://shop_images/banner-centerd.png",
+            "image_mobile": "shopify://shop_images/banner-centerd-mobile.png",
+            "image_alt": "Banner image",
+            "max_width": 710,
+            "show_button": true,
+            "button_label": "Shop now",
+            "button_url": ""
+          }
         }
+      },
+      "block_order": [
+        "slide_dQqTWH",
+        "slide_QJ7Rty"
+      ],
+      "name": "Banner slider",
+      "settings": {
+        "layout": "default",
+        "hide_images": "no"
+      }
     },
-    "order": ["banner_slider_fjzUb8", "categories", "product-collection-custom"]
+    "categories": {
+      "type": "categories",
+      "blocks": {
+        "category_i7gmTE": {
+          "type": "category",
+          "settings": {
+            "collection": "dried-fruits",
+            "image": "shopify://shop_images/1.png",
+            "custom_title": ""
+          }
+        },
+        "category_UTQpXL": {
+          "type": "category",
+          "settings": {
+            "collection": "dried-berries",
+            "image": "shopify://shop_images/2.png",
+            "custom_title": ""
+          }
+        },
+        "category_r8xLEK": {
+          "type": "category",
+          "settings": {
+            "collection": "nuts",
+            "image": "shopify://shop_images/3.png",
+            "custom_title": ""
+          }
+        },
+        "category_EJdAwd": {
+          "type": "category",
+          "settings": {
+            "collection": "natural-spices",
+            "image": "shopify://shop_images/4.png",
+            "custom_title": ""
+          }
+        },
+        "category_TCpbYM": {
+          "type": "category",
+          "settings": {
+            "collection": "gift-boxes",
+            "image": "shopify://shop_images/5.png",
+            "custom_title": ""
+          }
+        },
+        "category_KTFT9G": {
+          "type": "category",
+          "settings": {
+            "collection": "promo-products",
+            "image": "shopify://shop_images/6.png",
+            "custom_title": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_i7gmTE",
+        "category_UTQpXL",
+        "category_r8xLEK",
+        "category_EJdAwd",
+        "category_TCpbYM",
+        "category_KTFT9G"
+      ],
+      "settings": {
+        "title": "Categories"
+      }
+    },
+    "product-collection-custom": {
+      "type": "main-collection-custom",
+      "settings": {}
+    }
+  },
+  "order": [
+    "banner_slider_fjzUb8",
+    "categories",
+    "product-collection-custom"
+  ]
 }

@@ -228,7 +228,9 @@
       "filter_selected_accessibility": "{{ type }} (wybrano {{ count }} fitry(-ów))",
       "show_more": "Pokaż więcej",
       "show_less": "Pokaż mniej",
-      "filter_and_operator_subtitle": "Dopasuj wszystko"
+      "filter_and_operator_subtitle": "Dopasuj wszystko",
+      "title": "Filtry",
+      "mobile_button_text": "Filtr"
     }
   },
   "templates": {
@@ -272,7 +274,11 @@
       "pages": "Strony"
     },
     "cart": {
-      "cart": "Koszyk"
+      "cart": "Koszyk",
+      "title": "Wózek",
+      "subtotal": "Suma częściowa",
+      "notice": "Vouchery i koszty końcowe zostaną obliczone w następnym kroku",
+      "checkout": "Wymeldować się"
     },
     "contact": {
       "form": {
@@ -283,7 +289,11 @@
         "send": "Wyślij",
         "post_success": "Dziękujemy za skontaktowanie się z nami. Skontaktujemy się z Tobą tak szybko, jak to możliwe.",
         "error_heading": "Dostosuj następujące dane:",
-        "title": "Formularz kontaktowy"
+        "title": "Formularz kontaktowy",
+        "email_placeholder": "przykład@gmail.com",
+        "comment_placeholder": "Twoja wiadomość",
+        "policy_text": "Zgadzam się z naszym",
+        "policy_text_link": "Polityka prywatności"
       }
     },
     "404": {
@@ -420,7 +430,13 @@
       "title": "Konto",
       "details": "Szczegóły konta",
       "view_addresses": "Wyświetl adresy",
-      "return": "Wróć do szczegółów konta"
+      "return": "Wróć do szczegółów konta",
+      "name": "Nazwa",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "address": "Adres",
+      "edit": "Redagować",
+      "delete": "Usuwać"
     },
     "account_fallback": "Konto",
     "log_in": "Zaloguj się",
@@ -467,7 +483,11 @@
       "title": "Login",
       "sign_in": "Zaloguj się",
       "submit": "Prześlij",
-      "alternate_provider_separator": "lub"
+      "alternate_provider_separator": "lub",
+      "remember_me": "Pamiętaj mnie",
+      "register": "Zapisać się",
+      "reset_submit": "Wyślij instrukcje resetowania",
+      "error": " Podany adres e-mail lub hasło są nieprawidłowe. Spróbuj ponownie."
     },
     "order": {
       "title": "Zamówienie {{ name }}",
@@ -493,7 +513,8 @@
       "tracking_number": "Numer śledzenia",
       "subtotal": "Suma częściowa",
       "total_duties": "Cła",
-      "total_refunded": "Zwrócono koszty"
+      "total_refunded": "Zwrócono koszty",
+      "checkout": "Wymeldować się"
     },
     "orders": {
       "title": "Historia zamówień",
@@ -516,7 +537,11 @@
       "last_name": "Nazwisko",
       "email": "E-mail",
       "password": "Hasło",
-      "submit": "Utwórz"
+      "submit": "Utwórz",
+      "have_account": "Masz już konto?",
+      "agree": "Zgadzam się z naszym",
+      "privacy": "Polityka prywatności",
+      "success": "Twoje konto zostało pomyślnie utworzone. Sprawdź swoją skrzynkę e-mail, aby je aktywować."
     },
     "reset_password": {
       "title": "Zresetuj hasło do konta",
@@ -524,6 +549,19 @@
       "password": "Hasło",
       "password_confirm": "Potwierdź hasło",
       "submit": "Zresetuj hasło"
+    },
+    "account_nav": {
+      "title": "Cześć,",
+      "my_profile": "Mój profil",
+      "my_orders": "Święcenia",
+      "my_wishlist": "Zapisane elementy",
+      "log_in": "Zaloguj się",
+      "log_out": "Wyloguj się",
+      "create_account": "Utwórz konto"
+    },
+    "account_content": {
+      "order_title": "Lista historii zamówień",
+      "wishlist_title": "Moje zapisane pozycje"
     }
   },
   "gift_cards": {
@@ -556,6 +594,26 @@
       "send_on_label": "Wyślij dnia (opcjonalnie)",
       "expanded": "Rozwinięty formularz odbiorcy karty prezentowej",
       "collapsed": "Zwinięty formularz odbiorcy karty prezentowej"
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "shipping_errors": {
+        "unavailable_addresses_only_countries": "Twoje zamówienie może zostać wysłane tylko do {{countriesList}} . Dodaj nowy adres, aby kontynuować."
+      },
+      "local_pickup": {
+        "location_information_next": {
+          "one": "W pobliżu Ciebie znajduje się %{count} lokalizacji z towarem",
+          "other": "W pobliżu Ciebie znajduje się %{count} lokalizacji z towarem"
+        }
+      },
+      "one": {
+        "errors": {
+          "merchandise": {
+            "signature_mismatch": "Niezgodność podpisu towaru dla wiersza {{stable_id}} ."
+          }
+        }
+      }
     }
   }
 }

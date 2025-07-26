@@ -18,14 +18,14 @@
           "type": "menu",
           "settings": {
             "title": "Explore",
-            "menu": "footer"
+            "menu": "explore"
           }
         },
         "menu_aU4Hj7": {
           "type": "menu",
           "settings": {
             "title": "Product",
-            "menu": "product"
+            "menu": "footer"
           }
         },
         "menu_WHcDdB": {
