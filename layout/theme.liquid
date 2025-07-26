@@ -146,14 +146,22 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 	</div>
+
+	{% comment %} Wishlist code start {% endcomment %}
 	{% if customer %}
 		<script>
 			window.customer = {{ customer.id }};
+			window.add_to_cart = `{{ 'products.product.add_to_cart' | t }}`;
+		</script>
+	{% else %}
+		<script>
+			window.add_to_cart = `{{ 'products.product.add_to_cart' | t }}`;
 		</script>
 	{% endif %}
+	<script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
+	{% comment %} Wishlist code end {% endcomment %}
 	<script src="{{ 'app.min.js' | asset_url }}" type="module" defer="defer"></script>
 	<script src="{{ 'products.js' | asset_url }}" defer="defer"></script>
-	<script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
 	
   </body>
 </html>

@@ -16,6 +16,7 @@
       "settings": {
         "logo": "shopify://shop_images/logo.png",
         "main_menu": "main-menu",
+        "wishlist_link": "shopify://pages/wishlist",
         "show_language_selector": true,
         "show_currency_selector": true
       }
