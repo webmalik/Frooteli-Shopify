@@ -1,0 +1,54 @@
+<div class="account__nav-wrapper">
+  <div class="account__nav">
+    <div class="account__nav-main">
+      <h3 class="account__user">{{'customer.account_nav.title' | t}} {{ customer.first_name }}!</h3>
+      	<ul class="account__menu">
+			<li>
+			<a href="{{ routes.account_url }}">
+				{% render 'icon-user' %}
+				{{ 'customer.account_nav.my_profile' | t }}
+			</a>
+			</li>
+			<li>
+			<a href="/account/orders">
+				{% render 'icon-orders' %}
+				{{ current_url }}
+				{{ 'customer.account_nav.my_orders' | t }}
+			</a>
+			</li>
+			<li>
+			<a href="{{ wishlist_url }}">
+				{% render 'icon-heart' %}
+				{{ 'customer.account_nav.my_wishlist' | t }}
+			</a>
+			</li>
+		</ul>
+    </div>
+
+    <a href="{{ routes.account_logout_url }}" class="account__logout">
+      {{ 'customer.account_nav.log_out' | t }}
+      {% render 'icon-logout' %}
+    </a>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname;
+    const links = document.querySelectorAll('.account__menu a');
+
+    let matched = null;
+
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href) return;
+
+      if (currentPath === href) {
+        matched = link;
+      } else if (!matched && currentPath.startsWith(href)) {
+        matched = link;
+      }
+    });
+
+    if (matched) matched.classList.add('active');
+  });
+</script>

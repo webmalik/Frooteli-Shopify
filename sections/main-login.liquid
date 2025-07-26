@@ -1,14 +1,44 @@
 <section class="auth">
 	<div class="auth__wrapper">
+		<div class="auth__recover auth__content" style='display: none;'>
+			<h2 class="auth__title">{{ 'customer.recover_password.title' | t }}</h2>
+			{%- form 'recover_customer_password', class: 'auth__form' -%}
+				{%- if form.errors -%}
+					<div class="auth__errors">
+						{{ form.errors.messages['form'] }}
+					</div>
+					{%- endif -%}
+
+					{%- if form.posted_successfully? -%}
+					<div class="auth__success">
+						{{ 'customer.recover_password.success' | t }}
+					</div>
+				{%- endif -%}
+				<div class="auth__line">
+				<label for="RecoverEmail">{{ 'customer.login_page.email' | t }}</label>
+				<input
+					type="email"
+					name="email"
+					id="RecoverEmail"
+					autocomplete="email"
+					placeholder="example@gmail.com"
+					required />
+				</div>
+				<button type="submit" class="button button--primary">{{ 'customer.login_page.reset_submit' | t }}</button>
+			{%- endform -%}
+			<div class="auth__link">
+				<a href="#" data-auth-back>{{ 'customer.login_page.sign_in' | t }}</a>
+			</div>
+		</div>
 		<div class="auth__content">
 			<h2 class="auth__title">{{ 'customer.log_in' | t }}</h2>
-			{%- form 'customer_login', novalidate: 'novalidate', class: 'auth__form' -%}
+			{%- form 'customer_login', novalidate: 'novalidate', class: 'auth__form auth__login-form' -%}
 				<div class="auth__line">
 					<label for="email">{{ 'customer.login_page.email' | t }}</label>
 					<input
 						type="email"
 						name="customer[email]"
-						id="CustomerEmail"
+						id="email"
 						autocomplete="email"
 						autocorrect="off"
 						autocapitalize="off"
@@ -20,7 +50,7 @@
 						type="password"
 						value=""
 						name="customer[password]"
-						id="CustomerPassword"
+						id="password"
 						autocomplete="current-password"
 						placeholder="Enter password" />
 					<span class="auth__eye">
@@ -35,9 +65,14 @@
 					</div>
 				</div>
 				<button type="submit" class="button button--primary">{{ 'customer.login_page.submit' | t }}</button>
+				{%- if form.errors -%}
+					<div class="auth__errors">
+						{{ 'customer.login_page.error' | t }}
+					</div>
+				{%- endif -%}
 			{%- endform -%}
 			<div class="auth__link">
-				<span>{{ 'customer.login_page.create_account' | t }}</span><a href="#">{{ 'customer.login_page.register' | t }}</a>
+				<span>{{ 'customer.login_page.create_account' | t }}</span><a href="{{ routes.account_register_url }}">{{ 'customer.login_page.register' | t }}</a>
 			</div>
 		</div>
 		<div class="auth__image">
@@ -67,3 +102,26 @@
   ]
 }
 {% endschema %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const forgotLink = document.querySelector('.auth__forgot');
+    const backLink = document.querySelector('[data-auth-back]');
+    const loginBlock = document.querySelector('.auth__content:not(.auth__recover)');
+    const recoverBlock = document.querySelector('.auth__recover');
+
+    if (forgotLink && backLink && loginBlock && recoverBlock) {
+      forgotLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginBlock.style.display = 'none';
+        recoverBlock.style.display = 'flex';
+      });
+
+      backLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        recoverBlock.style.display = 'none';
+        loginBlock.style.display = 'flex';
+      });
+    }
+  });
+</script>

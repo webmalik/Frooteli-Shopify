@@ -103,6 +103,17 @@
     margin-bottom: 0;
 }
 
+.auth__info label a {
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.auth__recover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 @media (max-width: 61.9988em) {
     .contacts__image {
         aspect-ratio: 1/1;

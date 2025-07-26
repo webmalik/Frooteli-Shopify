@@ -407,9 +407,28 @@
     "customer": {
         "account": {
             "title": "Account",
-            "details": "Account details",
+            "details": "Profile details",
             "view_addresses": "View addresses",
-            "return": "Return to Account details"
+            "return": "Return to Account details",
+            "name": "Name",
+            "email": "Email",
+            "phone": "Phone",
+            "address": "Address",
+            "edit": "Edit",
+            "delete": "Delete"
+        },
+        "account_nav": {
+            "title": "Hi,",
+            "my_profile": "My profile",
+            "my_orders": "Orders",
+            "my_wishlist": "Saved items",
+            "log_in": "Log in",
+            "log_out": "Log out",
+            "create_account": "Create account"
+        },
+        "account_content": {
+            "order_title": "Order history list",
+            "wishlist_title": "My saved items"
         },
         "account_fallback": "Account",
         "activate_account": {
@@ -458,7 +477,9 @@
             "submit": "Login",
             "remember_me": "Remember me",
             "register": "Sign up",
-            "alternate_provider_separator": "or"
+            "alternate_provider_separator": "or",
+            "reset_submit": "Send reset instructions",
+            "error": " The email or password you entered is incorrect. Please try again."
         },
         "order": {
             "title": "Order {{ name }}",
@@ -508,7 +529,11 @@
             "last_name": "Last name",
             "email": "Email",
             "password": "Password",
-            "submit": "Create"
+            "submit": "Register",
+            "have_account": "Already have an account?",
+            "agree": "Agree with our",
+            "privacy": "Privacy Policy",
+            "success": "Your account has been created successfully. Please check your email to activate your account."
         },
         "reset_password": {
             "title": "Reset account password",
