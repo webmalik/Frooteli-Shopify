@@ -64,11 +64,191 @@
 		</div>
 		<div class="account__content-footer">
 			<div class="account__buttons">
-				<a href="#" class="button button--primary">Edit profile</a>
-				<a href="#" class="button button--transparent">Change password</a>
+				<a href="#" class="button button--primary" data-account-tab="edit">Edit profile</a>
+				<a href="#" class="button button--transparent" data-account-tab="change">Change password</a>
 			</div>
 		</div>
-	  </div>
+	</div>
+
+	 <div class="account__content account__tab" data-tab="edit">
+		<div class="account__content-body">
+			<div class="account__content-header">
+				<h2 class="account__content-title">{{ 'customer.account_content.edit_profile' | t }}</h2>
+				<div class="account__content-back" data-account-tab="profile">
+					{{ 'customer.account_content.back_to_profile' | t }}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="22"
+						height="10"
+						viewBox="0 0 22 10"
+						fill="none">
+						<path
+							d="M2.71094 4.99986L19.3776 4.99986M19.3776 4.99986L15.2109 1.42843M19.3776 4.99986L15.2109 8.57129"
+							stroke="currentColor"
+							stroke-opacity="1"
+							stroke-width="1.2"
+							stroke-linecap="round"
+							stroke-linejoin="round" />
+					</svg>
+				</div>
+			</div>
+			<div class="account__content-edit">
+				<form class="account__form" data-edit-form="edit">
+					<div class="account__line">
+						<div class="account__form-item">
+							<label for="first_name">{{ 'customer.account.name' | t }}</label>
+							<input type="text" name="first_name" placeholder="Carter" />
+						</div>
+						<div class="account__form-item">
+							<label for="last_name">{{ 'customer.account.surname' | t }}</label>
+							<input type="text" name="last_name" placeholder="Carter" />
+						</div>
+					</div>
+					<div class="account__line">
+						<div class="account__form-item">
+							<label for="email">{{ 'customer.account.email' | t }}</label>
+							<input
+								type="email"
+								name="email"
+								placeholder="olivia.carter@email.com" />
+						</div>
+						<div class="account__form-item">
+							<label for="phone">{{ 'customer.account.phone' | t }}</label>
+							<input
+								type="text"
+								name="phone"
+								placeholder="+1 (212) 678-4432" />
+						</div>
+					</div>
+					<div class="account__line">
+						<div class="account__form-item">
+							<label for="company">{{ 'customer.addresses.company' | t }}</label>
+							<input
+								type="text"
+								name="company"
+								placeholder="Enter your company" />
+						</div>
+					</div>
+					<div class="account__line">
+						<div class="account__form-item">
+							<label for="address1">{{ 'customer.addresses.address1' | t }}</label>
+							<input
+								type="text"
+								name="address1"
+								placeholder="Enter your address" />
+						</div>
+					</div>
+					<div class="account__line">
+						<div class="account__form-item">
+							<label for="address2">{{ 'customer.addresses.address2' | t }}</label>
+							<input
+								type="text"
+								name="address2"
+								placeholder="Enter apartment, suite, etc." />
+						</div>
+					</div>
+					<div class="account__line">
+						<div class="account__form-item">
+							<label for="city">{{ 'customer.addresses.city' | t }}</label>
+							<input type="text" name="city" placeholder="Enter city" />
+						</div>
+						<div class="account__form-item">
+							<label for="country">{{ 'customer.addresses.country' | t }}</label>
+							<input
+								type="text"
+								name="country"
+								placeholder="Choose a country" />
+						</div>
+					</div>
+					<div class="account__line">
+						<div class="account__form-item">
+							<label for="province">{{ 'customer.addresses.province' | t }}</label>
+							<input
+								type="text"
+								name="province"
+								placeholder="Enter province" />
+						</div>
+						<div class="account__form-item">
+							<label for="zip">{{ 'customer.addresses.zip' | t }}</label>
+							<input
+								type="text"
+								name="zip"
+								placeholder="Enter postal/zip code" />
+						</div>
+					</div>
+					<div class="account__line">
+						<div class="account__form-checkbox">
+							<input type="checkbox" checked name="set_default" id="set_default" />
+							<label for="set_default">{{ 'customer.addresses.set_default' | t }}</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="account__content-footer">
+			<div class="account__buttons">
+				<a href="#" class="button button--primary">{{ 'customer.addresses.update' | t }}</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="account__content account__tab" data-tab="change">
+		<div class="account__content-body">
+			<div class="account__content-header">
+				<h2 class="account__content-title">{{ 'customer.reset_password.title' | t }}</h2>
+				<div class="account__content-back" data-account-tab="profile">
+					{{ 'customer.account_content.back_to_profile' | t }}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="22"
+						height="10"
+						viewBox="0 0 22 10"
+						fill="none">
+						<path
+							d="M2.71094 4.99986L19.3776 4.99986M19.3776 4.99986L15.2109 1.42843M19.3776 4.99986L15.2109 8.57129"
+							stroke="currentColor"
+							stroke-opacity="1"
+							stroke-width="1.2"
+							stroke-linecap="round"
+							stroke-linejoin="round" />
+					</svg>
+				</div>
+			</div>
+			<div class="account__content-reset">
+				<p>{{ 'customer.reset_password.subtext' | t }}</p>
+				{%- form 'recover_customer_password', class: 'account__form-reset' -%}
+					{%- if form.errors -%}
+						<div class="auth__errors">
+							{{ form.errors.messages['form'] }}
+						</div>
+						{%- endif -%}
+
+						{%- if form.posted_successfully? -%}
+						<div class="auth__success">
+							{{ 'customer.recover_password.success' | t }}
+						</div>
+					{%- endif -%}
+					<div class="account__line">
+						<div class="account__form-item">
+							<label for="RecoverEmail">{{ 'customer.reset_password.email_label' | t }}</label>
+							<input
+								type="email"
+								name="email"
+								id="RecoverEmail"
+								autocomplete="email"
+								placeholder="{{ 'customer.reset_password.email_placeholder' | t }}"
+								required />
+						</div>
+					</div>
+					<div class="account__buttons">
+						<button type="submit" class="button button--primary">{{ 'customer.reset_password.submit' | t }}</button>
+					</div>
+				
+				{%- endform -%}
+			</div>
+		</div>
+	</div>
+
 	<div class="account__content account__tab" data-tab="orders" style="display:none">
 		<div class="account__content-body">
 			<h2 class="account__content-title order__content-title">
@@ -81,7 +261,7 @@
 				{% for order in customer.orders %}
 					<div class="order">
 					<div class="order__header">
-						<div class="order__title">Order №{{ order.name }}</div>
+						<div class="order__title">{{ 'customer.order.title' | t: name: order.name }}</div>
 						<div class="order__date">
 						{{ order.created_at | date: "%d.%m.%Y" }}
 						</div>
@@ -129,13 +309,14 @@
 		<div class="account__content-body">
 			<h2 class="account__content-title">{{'customer.account_content.wishlist_title' | t}}</h2>
 			<div class="account__content-wishlist">
-				{% comment %} {{ render 'product-card' }} {% endcomment %}
+				
 			</div>
 		</div>
 	</div>
   </div>
 </section>
 
+<script src="{{ 'account-edit.js' | asset_url }}" defer="defer"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

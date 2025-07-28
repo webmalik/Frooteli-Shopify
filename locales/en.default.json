@@ -411,6 +411,7 @@
             "view_addresses": "View addresses",
             "return": "Return to Account details",
             "name": "Name",
+            "surname": "Surname",
             "email": "Email",
             "phone": "Phone",
             "address": "Address",
@@ -428,7 +429,9 @@
         },
         "account_content": {
             "order_title": "Order history list",
-            "wishlist_title": "My saved items"
+            "wishlist_title": "My saved items",
+            "edit_profile": "Edit profile",
+            "back_to_profile": "back"
         },
         "account_fallback": "Account",
         "activate_account": {
@@ -456,7 +459,7 @@
             "phone": "Phone",
             "set_default": "Set as default address",
             "add": "Add address",
-            "update": "Update address",
+            "update": "Update account",
             "cancel": "Cancel",
             "edit": "Edit",
             "delete": "Delete",
@@ -536,11 +539,13 @@
             "success": "Your account has been created successfully. Please check your email to activate your account."
         },
         "reset_password": {
-            "title": "Reset account password",
-            "subtext": "Enter a new password",
+            "title": "Reset password",
+            "subtext": "Please enter your email and we’ll send you a password reset link.",
             "password": "Password",
             "password_confirm": "Confirm password",
-            "submit": "Reset password"
+            "submit": "Submit",
+            "email_label": "Email",
+            "email_placeholder": "Enter your email"
         }
     },
     "gift_cards": {
