@@ -431,7 +431,8 @@
             "order_title": "Order history list",
             "wishlist_title": "My saved items",
             "edit_profile": "Edit profile",
-            "back_to_profile": "back"
+            "back_to_profile": "back",
+            "update_success": "Customer updated successfully."
         },
         "account_fallback": "Account",
         "activate_account": {

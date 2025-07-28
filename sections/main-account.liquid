@@ -70,7 +70,7 @@
 		</div>
 	</div>
 
-	 <div class="account__content account__tab" data-tab="edit">
+	<div class="account__content account__tab" data-tab="edit">
 		<div class="account__content-body">
 			<div class="account__content-header">
 				<h2 class="account__content-title">{{ 'customer.account_content.edit_profile' | t }}</h2>
@@ -94,6 +94,7 @@
 			</div>
 			<div class="account__content-edit">
 				<form class="account__form" data-edit-form="edit">
+					<input type="hidden" name="address_id" />
 					<div class="account__line">
 						<div class="account__form-item">
 							<label for="first_name">{{ 'customer.account.name' | t }}</label>
@@ -152,12 +153,16 @@
 							<label for="city">{{ 'customer.addresses.city' | t }}</label>
 							<input type="text" name="city" placeholder="Enter city" />
 						</div>
-						<div class="account__form-item">
+						<div class="account__form-item form-select">
 							<label for="country">{{ 'customer.addresses.country' | t }}</label>
-							<input
-								type="text"
+							<select
+								id="AddressCountryNew"
 								name="country"
-								placeholder="Choose a country" />
+								data-default="{{ form.country }}"
+								autocomplete="country"
+							>
+								{{ all_country_option_tags }}
+							</select>
 						</div>
 					</div>
 					<div class="account__line">
@@ -178,8 +183,8 @@
 					</div>
 					<div class="account__line">
 						<div class="account__form-checkbox">
-							<input type="checkbox" checked name="set_default" id="set_default" />
-							<label for="set_default">{{ 'customer.addresses.set_default' | t }}</label>
+							<input type="checkbox" checked name="default" id="default" />
+							<label for="default">{{ 'customer.addresses.set_default' | t }}</label>
 						</div>
 					</div>
 				</form>
@@ -187,7 +192,7 @@
 		</div>
 		<div class="account__content-footer">
 			<div class="account__buttons">
-				<a href="#" class="button button--primary">{{ 'customer.addresses.update' | t }}</a>
+				<button data-edit-submit class="button button--primary">{{ 'customer.addresses.update' | t }}</button>
 			</div>
 		</div>
 	</div>

@@ -116,6 +116,30 @@
 .card__wishlist.active path.svg-fill {
     opacity: 1;
 }
+.form-select {
+    position: relative;
+}
+.form-select select {
+    border-radius: 6.25rem;
+    background: #fff;
+    height: 3.5rem;
+    padding: 0rem 1.5rem;
+    appearance: none;
+    position: relative;
+}
+
+.form-select::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    min-width: 1rem !important;
+    background-image: url(arrow-down.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    height: 100%;
+}
 @media (max-width: 61.9988em) {
     .contacts__image {
         aspect-ratio: 1/1;
